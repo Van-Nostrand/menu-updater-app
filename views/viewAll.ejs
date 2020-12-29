@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+  <div>All menu Items...</div>
+  <% allItems.forEach((item, i) => { %>
+    <div class="item-name">
+      <%= item.name %>
+    </div>
+    <div class="item-price">
+      <%= item.price ? item.price : item.pour1 %>
+    </div>
+  <% }) %>
+
+<%- include('partials/footer') %>

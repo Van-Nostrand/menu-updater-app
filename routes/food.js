@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
 
-router.route("/").get(function(req,res){
-  res.send("foods!");
-});
+const { createFood, getAllFoods, editFood } = require("../handlers/food");
+
+router.route("/").get(getAllFoods).post(createFood);
+router.route("/edit/:id").post(editFood);
 
 module.exports = router;

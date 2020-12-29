@@ -12,10 +12,8 @@ exports.createBeer = async function(req,res,next){
 
 exports.getAllBeers = async function(req, res, next){
   try{
-    let allbeers = await db.Beer.find();
-
-    return res.status(200).json(allbeers);
-
+    res.locals.allbeers = await db.Beer.find();
+    next();
   }catch(err){
     return next(err);
   }
@@ -23,9 +21,7 @@ exports.getAllBeers = async function(req, res, next){
 
 exports.editBeer = async function(req, res, next){  
   try{
-    let filter = {id: req.params.beer_id};
-    let theBeer = await db.Beer.findOneAndUpdate(filter, req.body);
-
+    let theBeer = await db.Beer.findOneAndUpdate({id: req.params.beer_id}, req.body);
     return res.status(200).json(theBeer);
 
   } catch(err){

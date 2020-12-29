@@ -40,20 +40,5 @@ const beerSchema = new mongoose.Schema({
   timestamps: true
 });
 
-beerSchema.methods.editBeerData = async function(data, next){
-  try{
-    if(data.name) this.name = data.name;
-    if(data.tapnumber) this.tapnumber = data.tapnumber;
-    if(data.pour1) this.pour1 = data.pour1;
-    if(data.pour1price) this.pour1price = data.pour1price;
-    if(data.pour2) this.pour2 = data.pour2;
-    if(data.pour2price) this.pour2price = data.pour2price;
-    if(data.pour3) this.pour3 = data.pour3;
-    if(data.pour3price) this.pour3price = data.pour3price;
-  }catch(err){
-    return next(err);
-  }
-};
-
 const Beer = mongoose.model("Beer", beerSchema);
 module.exports = Beer;

@@ -1,38 +1,35 @@
-const express = require('express');
-const app = express();
-const bodyParser = require("body-parser");
-const PORT = 8000;
-const axios = require("axios");
-const path = require("path");
+const express     = require('express'),
+      app         = express(),
+      bodyParser  = require("body-parser"),
+      axios       = require("axios"),
+      path        = require("path"),
+      cors        = require("cors"),
+      beerRoutes  = require("./routes/beer"),
+      foodRoutes  = require("./routes/food"),
+      mainRoutes  = require("./routes/main"),
+      seedDB      = require("./seedDB"),
+      PORT        = 8000;
 
-const beerRoutes = require("./routes/beer");
-const foodRoutes = require("./routes/food");
 
+//--------------------------------------------
+// SEE MODELS/INDEX FOR MONGOOSE CONFIG
 const db = require("./models");
 
-console.log("heres db");
-console.log(db);
+//use to reset the database for development
+// seedDB();
 
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function callback () {
-//   console.log("h");
-// });
-
-// exports.test = function(req,res) {
-//   console.log(res)
-// };
-
+app.use(cors());
 app.use(bodyParser.json());
 app.set('view engine', 'ejs');
-
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.static(path.join(__dirname,"/src")));
 app.use("/beers", beerRoutes);
 app.use("/food", foodRoutes);
+app.use("/", mainRoutes);
 
-app.get("/", function(req,res){
-  res.render("landing");
-});
+// app.get("/", function(req,res){
+//   res.render("landing");
+// });
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);

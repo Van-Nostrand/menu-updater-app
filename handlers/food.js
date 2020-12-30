@@ -12,9 +12,10 @@ exports.createFood = async function(req,res,next){
 
 exports.getAllFoods = async function(req, res, next){
   try{
-    let allfoods = await db.Food.find();
-
-    return res.status(200).json(allfoods);
+    res.locals.allfoods = await db.Food.find();
+    res.locals.created = null;
+    next();
+    
 
   }catch(err){
     return next(err);

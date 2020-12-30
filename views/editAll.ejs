@@ -15,6 +15,9 @@
         <%= item.pour1 %>
       <% } %>
     </div>
+    <div class="edit-buttons">
+      <form action="<%= `/beers/edit/${item.id}` %>?_method=DELETE" method="POST"><button type="submit">delete me</button></form>
+    </div>
   <% }) %>
 
 <%- include('partials/footer') %>

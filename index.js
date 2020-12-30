@@ -1,14 +1,15 @@
-const express     = require('express'),
-      app         = express(),
-      bodyParser  = require("body-parser"),
-      axios       = require("axios"),
-      path        = require("path"),
-      cors        = require("cors"),
-      beerRoutes  = require("./routes/beer"),
-      foodRoutes  = require("./routes/food"),
-      mainRoutes  = require("./routes/main"),
-      seedDB      = require("./seedDB"),
-      PORT        = 8000;
+const express         = require('express'),
+      app             = express(),
+      bodyParser      = require("body-parser"),
+      axios           = require("axios"),
+      path            = require("path"),
+      cors            = require("cors"),
+      methodOverride  = require("method-override"),
+      beerRoutes      = require("./routes/beer"),
+      foodRoutes      = require("./routes/food"),
+      mainRoutes      = require("./routes/main"),
+      seedDB          = require("./seedDB"),
+      PORT            = 8000;
 
 
 //--------------------------------------------
@@ -18,8 +19,10 @@ const db = require("./models");
 //use to reset the database for development
 // seedDB();
 
+app.use(methodOverride("_method"));
 app.use(cors());
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.static(path.join(__dirname,"/src")));

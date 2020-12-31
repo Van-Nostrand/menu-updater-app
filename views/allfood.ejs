@@ -1,12 +1,13 @@
 <%- include('partials/header') %>
 
-  <div><%= category %></div>
+  <div>Food!</div>
   <% if(created){ %>
     <div>successfully created <%= created.name %></div> 
   <% } %>
   <ul>
-    <% allItems.forEach((item, i) => { %>
-      <%- include('./partials/fooditem', {item, mode: "display"}) %>
+    <li class="header-row"></li>
+    <% allfood.forEach((item, i) => { %>
+      <%- include('./partials/fooditem', {item}) %>
     <% }) %>
   </ul>
 

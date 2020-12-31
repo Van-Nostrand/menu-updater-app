@@ -3,7 +3,8 @@ const db = require("../models");
 // /food GET
 exports.getAllFood = async function(req, res, next){
   try{
-    res.locals.allfoods = await db.Food.find();
+    res.locals.allfood = await db.Food.find();
+    console.log(res.locals.allfood)
     res.locals.created = null;
     next();
     
@@ -15,9 +16,10 @@ exports.getAllFood = async function(req, res, next){
 // /food/create POST
 exports.createFood = async function(req,res,next){
   try{
-    let food = await db.Food.create({...req.body});
+    let food = await db.Food.create({...req.body, itemType: "food"});
+    req.session.created = food;
 
-    return res.status(200).json(food);
+    next();
   } catch(err){
     return next(err);
   }

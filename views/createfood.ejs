@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+  <form action="/food/create" method="POST" >
+    <input name="name" type="text" placeholder="name of food">
+    <input name="price" type="number" step="0.01" placeholder="food price">
+    <input name="notes" type="text" placeholder="notes?">
+    <input name="diet" type="text" placeholder="diet">
+    <button >CLICK ME</button>
+  </form>
+
+<%- include('partials/footer') %>

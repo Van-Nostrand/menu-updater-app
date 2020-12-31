@@ -6,6 +6,7 @@
       <input name="notes" type="text" value="<%= item.notes %>">
       <input name="price" type="number" value="<%= item.price %>">
       <input name="diet" type="text" value="<%= item.diet %>">
+      <button type="submit">Update this item</button>
     </form>
 
     <form action="<%= `/food/edit/${item.id}` %>?_method=DELETE" method="POST">

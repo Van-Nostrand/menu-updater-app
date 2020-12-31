@@ -6,7 +6,9 @@ const { createFood, getAllFood, updateFood, deleteFood, editFood } = require("..
 // VIEW ALL FOOD
 router.route("/")
   .get(getAllFood, function(req,res,next){
-    res.render("viewAll", {allItems: res.locals.allfoods, category: "Food"});
+    res.locals.mode = "display";
+
+    res.render("allfood");
   });
 
 // CREATE FOOD

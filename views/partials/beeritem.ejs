@@ -6,6 +6,7 @@
       <input name="name" type="text" value="<%= item.name %>">
       <input name="pour1" type="number" value="<%= item.pour1 %>">
       <input name="pour1price" type="number" value="<%= item.pour1price %>">
+      <button type="submit">update this item</button>
     </form>
 
     <form action="<%= `/beers/edit/${item.id}` %>?_method=DELETE" method="POST">

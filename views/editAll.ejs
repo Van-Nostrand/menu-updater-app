@@ -4,20 +4,24 @@
   <% if(created !== undefined){ %>
     <div>successfully created <%= created %></div> 
   <% } %>
+  <div>edit items</div>
   <% allItems.forEach((item, i) => { %>
-    <div class="item-name">
-      <%= item.name %>
-    </div>
-    <div class="item-price">
-      <% if(item.price){ %>
-        <%= item.price %>
-      <% } else { %>
-        <%= item.pour1 %>
-      <% } %>
-    </div>
-    <div class="edit-buttons">
-      <form action="<%= `/beers/edit/${item.id}` %>?_method=DELETE" method="POST"><button type="submit">delete me</button></form>
-    </div>
+    <% if(item.itemType === "beer"){ %>
+      
+      <%- include('partials/beeritem', {item, mode: "edit"}) %>
+    <% } else { %>
+      
+      <div class="item-name">
+        <%= item.name %>
+      </div>
+      <div class="item-price">
+        <% if(item.price){ %>
+          <%= item.price %>
+        <% } else { %>
+          <%= item.pour1 %>
+        <% } %>
+      </div>
+    <% } %>
   <% }) %>
 
 <%- include('partials/footer') %>

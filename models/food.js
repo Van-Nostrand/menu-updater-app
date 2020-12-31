@@ -16,6 +16,10 @@ const foodSchema = new mongoose.Schema({
   },
   diet: {
     type: String
+  },
+  itemType: {
+    type: String,
+    required: true
   }
 },
 {

@@ -1,0 +1,29 @@
+<li class="beer-item">
+
+  <% if(mode === "edit"){ %>
+    
+    <form action="<%= `/beers/edit/${item.id}` %>?_method=PUT" method="POST">
+      <input name="name" type="text" value="<%= item.name %>">
+      <input name="pour1" type="number" value="<%= item.pour1 %>">
+      <input name="pour1price" type="number" value="<%= item.pour1price %>">
+    </form>
+
+    <form action="<%= `/beers/edit/${item.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete me</button>
+    </form>
+
+  <% } else { %>
+    <div className="item-name">
+      <%= item.name %>
+    </div>
+
+    <div className="item-pour1">
+      <%= item.pour1 %>oz
+    </div>
+    
+    <div className="item-pour1price">
+      <%= item.pour1price %>
+    </div>
+  <% } %>
+  
+</li>

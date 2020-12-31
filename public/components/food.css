@@ -1,0 +1,359 @@
+
+.food-item{
+  position: relative;
+  display: grid;
+  margin: 1rem;
+
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto 1fr;
+  row-gap: 0.1rem;
+  
+  font-size: 0.6em;
+  
+  /* @include respond(big-desk){
+    margin: 1rem 2rem;
+
+    font-size: 0.8em;
+  }
+
+  @include respond(tab-port){
+    max-height: unset;
+    align-content: center;
+    width: unset;
+
+  }
+
+  @include respond(phone){
+    max-width: unset;
+
+    font-size: 0.9em;
+  } */
+}
+.food-item.item-name{
+  display: inline-block;
+  
+  letter-spacing: 0;
+  grid-column: 1 / span 2;
+  grid-row: 1 ;
+  justify-self: start;
+
+  font-size: 1.08em;
+
+}
+
+.food-item.item-price{
+  display: inline-block;
+
+  text-align: end;
+  grid-column: 3;
+  grid-row: 1;
+
+  font-size: 0.9em;
+  padding-right: 0.7rem;
+
+  /* @include respond(tab-port){
+    padding-right: 0;
+  } */
+} 
+  
+.food-item.item-notes{
+
+  justify-self: start;
+  grid-column: 1 / span 3;
+  grid-row: 2;
+
+  font-size: 0.8em;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.food-item.item-diet{
+  font-size: 0.7em;
+  font-style: italic;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+
+/* 
+
+/////////////////////////////// 
+////// SECTIONS
+.food-menu{ // div at top
+
+  position: relative;
+  top: $desktop-nav-height; 
+  margin: 1rem auto 3rem auto;
+  width: 76vw;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  background-color: $menu-background-color;
+  color: $brown-q;
+  font-size: 2.5rem;
+
+  @include respond(tab-port){
+    top: $mobile-nav-height;
+    margin: 1rem 0;
+    width: 95vw;
+
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  p{
+    align-self: flex-start;
+    font-size: 0.7em;
+    font-style: italic;
+    @include respond(tab-port){
+      margin-left: 3rem;
+    }
+
+    @include respond(phone){
+      margin-left: 0.5rem;
+    }
+  }
+  ////////////////////////////////////////////////
+  .food-section{
+  
+    position: relative;
+    margin-bottom: 1rem;
+
+    grid-column: 1 / span 2;
+    
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+
+    border-top: 3px solid $portland-red;
+    
+    @include respond(tab-port){
+      margin-bottom: 1.5rem;
+      align-items: stretch;
+    }
+
+    .section__title{
+      align-self: flex-start;
+      text-transform: capitalize;
+      font-weight: 700;
+      font-size: 0.95em;
+      text-align: center;
+      color: $portland-red;
+  
+      padding: 3rem 2rem 0rem 0.5rem;
+  
+      @include respond(big-desk){
+        font-size: 1.2em;
+      }
+
+      @include respond(phone){
+        font-size: 1.2em;
+      }
+    }
+  
+    .section__list{
+
+      display: grid;
+      grid-template-columns: 25% 25% 25% 25%;
+      justify-content: stretch;
+      padding: 1rem;
+      justify-content: center;
+
+      @include respond(tab-port){
+        display: grid;
+        grid-template-columns: 40vw 40vw;
+        justify-content: space-around;
+        align-items: stretch;
+        
+        text-align: start;
+      }
+      
+      @include respond(phone){
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: stretch;
+      }
+    }
+  }
+
+  section.snacks .section__title{
+    color: $potential-blue;
+  }
+  section.omnivores .section__title{
+    color: $portland-red;
+  }
+  section.herbivores .section__title{
+    color: $maybe-green;
+  }
+
+  // positions "sides" beside "sweets"
+  section:nth-last-child(2){
+    grid-column: 1;
+  
+    @include respond(tab-port){
+      grid-column: unset;
+      margin-right: 0;
+    }
+  }
+
+  //positions "sides" beside "sweets"
+  section:nth-last-child(1){
+    grid-column: 2;
+  
+    @include respond(tab-port){
+      grid-column: unset;
+      margin-left: 0;
+    }
+  }
+
+  ///////////////////////////////////////
+  ////////// SWEETS
+  .sweets{
+    .section__list{
+      grid-template-columns: 50% 50%;
+
+      @include respond(tab-port){
+        grid-template-columns: 40vw 40vw;
+      }
+    }
+  }
+
+  ////////////////////////////////////
+  ///////// SIDES
+  & .sides {
+  
+    @include respond(tab-port){
+      max-width: unset;
+      align-self: stretch;
+    }
+
+    .section__list{
+      min-width: unset;
+
+      display: flex;
+      flex-flow: row wrap;
+
+      @include respond(tab-port){
+        display: grid;
+        grid-template-columns: auto auto;
+        height: auto;
+      }
+
+      @include respond(phone){
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+      }
+  
+      .food-item{
+        grid-template-columns: 80% 10%;
+        grid-template-rows: auto;
+        width: 18rem;
+        margin: 0.1rem;
+        
+        font-size: 0.8em;
+        
+        @include respond(tab-port){
+          width: 40vw;
+        }
+
+        @include respond(big-desk){
+          font-size: 0.7em;
+        }
+        .item-price{
+          grid-column: 2;
+        }
+      }
+    }
+  }
+
+  .snacks .section__title{
+    color: $potential-blue;
+  }
+  .herbivores .section__title{
+    color: $maybe-green;
+  }
+}
+
+
+
+
+//////////////////////////////////// 
+////////// ITEMS
+.food-item{
+  position: relative;
+  display: grid;
+  margin: 1rem;
+
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto 1fr;
+  row-gap: 0.1rem;
+  
+  font-size: 0.6em;
+  
+  @include respond(big-desk){
+    margin: 1rem 2rem;
+
+    font-size: 0.8em;
+  }
+
+  @include respond(tab-port){
+    max-height: unset;
+    align-content: center;
+    width: unset;
+
+  }
+
+  @include respond(phone){
+    max-width: unset;
+
+    font-size: 0.9em;
+  }
+
+  .item-name{
+    display: inline-block;
+    
+    letter-spacing: 0;
+    grid-column: 1 / span 2;
+    grid-row: 1 ;
+    justify-self: start;
+
+    font-size: 1.08em;
+
+  }
+
+  .item-price{
+    display: inline-block;
+
+    text-align: end;
+    grid-column: 3;
+    grid-row: 1;
+
+    font-size: 0.9em;
+    padding-right: 0.7rem;
+
+    @include respond(tab-port){
+      padding-right: 0;
+    }
+  } 
+  
+  .item-notes{
+
+    justify-self: start;
+    grid-column: 1 / span 3;
+    grid-row: 2;
+
+    font-size: 0.8em;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .diet{
+    font-size: 0.7em;
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+}
+ */

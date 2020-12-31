@@ -5,3 +5,38 @@
   padding: 0;
   box-sizing: inherit;
 }
+
+html{
+  font-family: sans-serif;
+}
+
+nav{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: 100vw;
+}
+
+nav a {
+  text-decoration: none;
+  margin: 1rem; 
+  padding: 1rem 2rem;
+  background-color: #b2b29f;
+  border-radius: 0.3rem;
+  color: #3a6a82;
+}
+
+nav a:visited{ color: #2f566a; }
+nav a:active{ color: #3e738e; }
+
+.main-container{
+  width: 100vw;
+  position: relative;
+  margin: 0 auto;
+  
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+}
+

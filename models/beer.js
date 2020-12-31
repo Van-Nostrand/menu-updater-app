@@ -34,6 +34,10 @@ const beerSchema = new mongoose.Schema({
   pour3price: {
     type: Number,
     required: false
+  },
+  itemType: {
+    type: String,
+    required: true
   }
 },
 {

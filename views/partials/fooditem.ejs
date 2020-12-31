@@ -1,0 +1,32 @@
+<li class="food-item">
+  <% if(mode === "edit"){ %>
+    
+    <form action="<%= `/food/edit/${item.id}` %>?_method=PUT" method="POST">
+      <input name="name" type="text" value="<%= item.name %>">
+      <input name="notes" type="text" value="<%= item.notes %>">
+      <input name="price" type="number" value="<%= item.price %>">
+      <input name="diet" type="text" value="<%= item.diet %>">
+    </form>
+
+    <form action="<%= `/food/edit/${item.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete me</button>
+    </form>
+
+  <% } else { %>
+    <div class="item-name">
+      <%= item.name %>
+    </div>
+
+    <div class="item-price">
+      <%= item.price %>
+    </div>
+
+    <div class="item-notes">
+      <%= item.notes %>
+    </div>
+
+    <div class="item-diet">
+      <%= item.diet %>
+    </div>
+  <% } %>
+</li>

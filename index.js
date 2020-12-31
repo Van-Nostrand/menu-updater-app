@@ -23,7 +23,12 @@ const db = require("./models");
 
 // express configuration
 // app.use(cookieParser());
-app.use(session({secret: "ITS A DAMN SECRET", cookie: { sameSite: 'strict'}}));
+app.use(session({
+  secret: "ITS A DAMN SECRET", 
+  resave: false, 
+  saveUninitialized: false, 
+  cookie: { sameSite: 'strict'}
+}));
 app.use(methodOverride("_method"));
 app.use(cors());
 app.use(bodyParser.json());
@@ -31,6 +36,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,"/public")));
 
+// error handling
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -42,7 +48,7 @@ app.use(function(err, req, res, next) {
 });
 
 // define routes
-app.use("/beers", beerRoutes);
+app.use("/beer", beerRoutes);
 app.use("/food", foodRoutes);
 app.use("/", mainRoutes);
 

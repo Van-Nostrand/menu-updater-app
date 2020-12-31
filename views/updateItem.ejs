@@ -1,19 +1,11 @@
 <%- include('partials/header') %>
 
   <div>Edit Item</div>
-  <% if(item.itemType === "beer"){ %>
-    <%- include('./partials/beeritem', {item, mode: "edit"}) %>
+  <% if(beer){ %>
+    <% console.log("updateItem") %>
+    <%- include('./partials/beeritem', {beer,mode: "edit"}) %>
+  <% } else if(food) { %>
+    <%- include('./partials/fooditem', {food, mode: "edit"}) %>
   <% } %>
-  <% else if(item.itemType === "food") {
-    <%- include('./partials/fooditem', {item, mode: "edit"}) %>
-  <% } %>
-  
-  <div class="edit-buttons">
-    <form action="<%= `/beers/edit/${item.id}` %>?_method=DELETE" method="POST">
-
-      <button type="submit">delete me</button>
-      
-    </form>
-  </div>
 
 <%- include('partials/footer') %>

@@ -6,7 +6,7 @@
   <% } %>
   <ul>
     <% allItems.forEach((item, i) => { %>
-      <%- include('./partials/beeritem', {item }) %>
+      <%- include('./partials/beeritem', { beer: item }) %>
     <% }) %>
   </ul>
 

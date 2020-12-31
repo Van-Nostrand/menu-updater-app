@@ -1,33 +1,39 @@
 <li class="food-item">
   <% if(mode === "edit"){ %>
     
-    <form action="<%= `/food/edit/${item.id}` %>?_method=PUT" method="POST">
-      <input name="name" type="text" value="<%= item.name %>">
-      <input name="notes" type="text" value="<%= item.notes %>">
-      <input name="price" type="number" value="<%= item.price %>">
-      <input name="diet" type="text" value="<%= item.diet %>">
+    <form class="food-edit-form" action="<%= `/food/edit/${food.id}` %>?_method=PUT" method="POST">
+      <label for="name">Item Name</label>
+      <input name="name" type="text" value="<%= food.name %>">
+      <label for="notes">Item Notes</label>
+      <input name="notes" type="text" value="<%= food.notes %>">
+      <label for="price">Item Price</label>
+      <input name="price" type="number" value="<%= food.price %>">
+      <label for="diet">Item Dietary Notes</label>
+      <input name="diet" type="text" value="<%= food.diet %>">
       <button type="submit">Update this item</button>
     </form>
 
-    <form action="<%= `/food/edit/${item.id}` %>?_method=DELETE" method="POST">
-      <button type="submit">delete me</button>
+    <form class="delete-form" action="<%= `/food/edit/${food.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete this item</button>
     </form>
 
   <% } else { %>
     <div class="item-name">
-      <%= item.name %>
+      <%= food.name %>
     </div>
 
     <div class="item-price">
-      <%= item.price %>
+      <%= food.price %>
     </div>
 
     <div class="item-notes">
-      <%= item.notes %>
+      <%= food.notes %>
     </div>
 
     <div class="item-diet">
-      <%= item.diet %>
+      <%= food.diet %>
     </div>
+
+    <a href="<%= `/food/edit/${food.id}` %>">edit</a>
   <% } %>
 </li>

@@ -4,6 +4,12 @@
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+  /* background-color: black; */
+  /* color: white; */
+}
+
+body{
+  /* background-color: black; */
 }
 
 html{
@@ -37,6 +43,15 @@ nav a:active{ color: #3e738e; }
   display: flex;
   flex-flow: column;
   align-items: center;
-
 }
 
+.item-name{
+  font-size: 1.3em;
+}
+
+button{
+  /* color: black; */
+}
+input{
+  /* color: black; */
+}

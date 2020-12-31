@@ -1,30 +1,38 @@
 <li class="beer-item">
 
   <% if(mode === "edit"){ %>
+    <% console.log("beer edit mode") %>
+    <% console.log(beer.name) %>
     
-    <form action="<%= `/beers/edit/${item.id}` %>?_method=PUT" method="POST">
-      <input name="name" type="text" value="<%= item.name %>">
-      <input name="pour1" type="number" value="<%= item.pour1 %>">
-      <input name="pour1price" type="number" value="<%= item.pour1price %>">
+    
+    <form class="beer-edit-form" action="<%= `/beers/edit/${beer.id}` %>?_method=PUT" method="POST">
+      <label for="name">Item Name</label>
+      <input name="name" type="text" value="<%= beer.name %>">
+      <label for="pour1">Large Pour Size</label>
+      <input name="pour1" type="number" value="<%= beer.pour1 %>">
+      <label for="pour1price">Large Pour Price</label>
+      <input name="pour1price" type="number" value="<%= beer.pour1price %>">
       <button type="submit">update this item</button>
     </form>
 
-    <form action="<%= `/beers/edit/${item.id}` %>?_method=DELETE" method="POST">
-      <button type="submit">delete me</button>
+    <form class="beer-delete-form" action="<%= `/beers/edit/${beer.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete</button>
     </form>
 
   <% } else { %>
     <div className="item-name">
-      <%= item.name %>
+      <%= beer.name %>
     </div>
 
     <div className="item-pour1">
-      <%= item.pour1 %>oz
+      <%= beer.pour1 %>oz
     </div>
     
     <div className="item-pour1price">
-      <%= item.pour1price %>
+      <%= beer.pour1price %>
     </div>
+
+    <a href="<%= `/beer/edit/${beer.id}` %>">edit</a>
   <% } %>
   
 </li>

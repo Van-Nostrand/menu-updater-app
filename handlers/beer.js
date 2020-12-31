@@ -35,7 +35,7 @@ exports.updateBeer = async function(req, res, next){
 // /edit/:beer_id GET
 exports.editBeer = async function(req, res, next){
   try{
-    res.locals.oneBeer = await db.Beer.find({_id: req.params.beer_id});
+    res.locals.beer = await db.Beer.findOne({_id: req.params.beer_id});
     next();
   } catch(err){
     return next(err);

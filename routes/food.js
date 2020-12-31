@@ -31,7 +31,7 @@ router.route("/edit")
 // EDIT ONE FOOD
 router.route("/edit/:food_id")
   .get(editFood, function(req,res){ 
-    res.render("updateItem", {item: res.locals.oneFood})
+    res.render("updateItem", {item: res.locals.food})
   })
   .put(updateFood, function(req, res){
     res.redirect("/food");

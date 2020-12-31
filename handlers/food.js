@@ -35,14 +35,13 @@ exports.updateFood = async function(req, res, next){
   }
 }
 
-exports.editFood = async function(req, res, next){  
+
+exports.editFood = async function(req, res, next){
   try{
-    let filter = {id: req.params.food_id};
-    let theFood = await db.Food.findOneAndUpdate(filter, req.body);
-
-    return res.status(200).json(theFood);
-
-  } catch(err){
+    let filter = {_id: req.params.food_id};
+    res.locals.food = await db.Food.findOne(filter);
+    next()
+  } catch(err) {
     return next(err);
   }
 }

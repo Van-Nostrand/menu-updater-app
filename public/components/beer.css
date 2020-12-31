@@ -1,29 +1,43 @@
 .beer-item{
   display: grid;
   grid-template-columns: 70% 15% 15%;
-  
+  grid-template-rows: 1fr 1fr 1fr;
   justify-self: center;
   margin: 0.3rem 0;
 }
 
-.beer-item.item-name{
+.beer-item .item-name{
   grid-column: 1;
-
-  font-size: 0.8em;
 }
 
-.beer-item.item-pour1{
+.beer-item .item-pour1{
   grid-column: 2;
   justify-self: end;
-
-  font-size: 0.7em;
 }
 
-.beer-item.item-pour1price{
+.beer-item .item-pour1price{
   grid-column: 3;
   justify-self: start;
+}
 
-  font-size: 0.7em;
+.beer-edit-form{
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 3;
+
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+
+.beer-delete-form{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+.beer-edit-form label{
+  grid-row: 1;
+}
+.beer-edit-form input{
+  grid-row: 2;
 }
 /* 
 .drinks-menu{

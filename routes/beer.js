@@ -21,7 +21,7 @@ router.route("/create")
     res.render("createbeer")
   })
   .post(createBeer, function(req,res){
-    res.redirect("/beers");
+    res.redirect("/beer");
   });
 
 // EDIT ALL BEER
@@ -34,13 +34,13 @@ router.route("/edit")
 // EDIT ONE BEER - get route not currently used
 router.route("/edit/:beer_id")
   .get(editBeer, function(req,res){ 
-    res.render("updateItem", {item: res.locals.oneBeer})
+    res.render("updateItem")
   })
   .put(updateBeer, function(req, res){
-    res.redirect("/beers");
+    res.redirect("/beer");
   })
   .delete(deleteBeer, function(req,res){
-    res.redirect("/beers");
+    res.redirect("/beer");
   });
 
 module.exports = router;

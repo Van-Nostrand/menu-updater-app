@@ -4,9 +4,32 @@
   display: grid;
   margin: 1rem;
 
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto auto 1fr;
+  grid-template-columns: repeat(2, 2fr) 1fr;
+  grid-template-rows: repeat(2, auto) 1fr;
   row-gap: 0.1rem;
+  /* min-height: 8rem; */
+}
+
+  /* .food-item::before{
+    content: '';
+    position: absolute;
+    border-top: 0.3rem solid purple;
+    border-left: 0.3rem solid green;
+    left: -0.3rem;
+    top: -0.2rem;
+    width: 30%;
+    height: 40%;  
+  } */
+
+.food-item::after{
+  content:'';
+  position: absolute;
+  border-left: 0.3rem solid grey;
+  border-bottom: 0.3rem solid grey;
+  width: 95%;
+  height: 70%;
+  left: -0.3rem;
+  bottom: -0.4rem;
 }
 
 .food-item .item-name{
@@ -24,6 +47,7 @@
   grid-row: 1;
   padding-right: 0.7rem;
 
+  /* align-self: end; */
   text-align: end;
 } 
   
@@ -44,17 +68,35 @@
   opacity: 0.8;
 }
 
-.food-edit-form {
+.food-item a{
+  justify-self: center;
+}
+
+.food-edit-form, .create-food-form {
+  grid-row: 1 / span 3;
+  grid-column: 1 / span 3;
+  
   display: grid;
   grid-template-rows: auto auto auto;
 }
 
-.food-edit-form label{
+.food-item .delete-form{
+  grid-row: 3;
+  grid-column: 3;
+  align-self: end;
+  justify-self: end;
+}
+
+.food-edit-form label, .create-food-form label{
   grid-row: 1;
 }
 
-.food-edit-form input{
+.food-edit-form input, .create-food-form input, .create-food-form select{
   grid-row: 2;
+}
+
+.food-edit-form button, .create-food-form button{
+  grid-row: 3;
 }
 
 /* 

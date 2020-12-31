@@ -20,22 +20,27 @@ const foodSchema = new mongoose.Schema({
   itemType: {
     type: String,
     required: true
+  },
+  menuSection: {
+    type: String,
+    required: true
   }
 },
 {
   timestamps: true
 });
 
-foodSchema.methods.editFoodData = async function(data, next){
-  try{
-    if(data.name) this.name = data.name;
-    if(data.notes) this.notes = data.notes;
-    if(data.price) this.price = data.price;
-    if(data.diet) this.diet = data.diet;
-  }catch(err){
-    return next(err);
-  }
-};
+// ???
+// foodSchema.methods.editFoodData = async function(data, next){
+//   try{
+//     if(data.name) this.name = data.name;
+//     if(data.notes) this.notes = data.notes;
+//     if(data.price) this.price = data.price;
+//     if(data.diet) this.diet = data.diet;
+//   }catch(err){
+//     return next(err);
+//   }
+// };
 
 const Food = mongoose.model("Food", foodSchema);
 module.exports = Food;

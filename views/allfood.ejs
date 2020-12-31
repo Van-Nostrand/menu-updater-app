@@ -1,14 +1,59 @@
 <%- include('partials/header') %>
+  <div class="food-container">
 
-  <div>Food!</div>
-  <% if(created){ %>
-    <div>successfully created <%= created.name %></div> 
-  <% } %>
-  <ul>
-    <li class="header-row"></li>
-    <% allfood.forEach((item, i) => { %>
-      <%- include('./partials/fooditem', {item}) %>
-    <% }) %>
-  </ul>
+
+    <!-- if we just finished creating an item, note that here -->
+    <% if(created){ %>
+      <div>successfully created <%= created.name %></div> 
+    <% } %>
+    
+
+    <ul class="allfood-list">  
+
+      <% if(locals.features && locals.features.length > 0){ %> 
+        <li class="header-row">Features</li>
+        <% locals.features.forEach((item, i) => { %>
+          <%- include('partials/fooditem', {food: item}) %> 
+        <% }) %>
+      <% } %>
+
+      <% if(locals.sides && locals.sides.length > 0){ %>
+        <li class="header-row">Sides</li>
+        <% locals.sides.forEach((item, i) => { %>
+          <%- include('partials/fooditem', {food: item}) %>
+        <% }) %>
+      <% } %> 
+
+      <% if(locals.starters && locals.starters.length > 0){ %>
+        <li class="header-row">Snacks</li>
+        <% locals.starters.forEach((item, i) => { %>
+          <%- include('partials/fooditem', {food: item}) %>
+        <% }) %>
+      <% } %> 
+
+      <% if(locals.smallplates && locals.smallplates.length > 0){ %> 
+        <li class="header-row">Small Plates</li>
+        <% locals.smallplates.forEach((item, i) => { %>
+          <%- include('partials/fooditem', {food: item}) %>
+        <% }) %>
+      <% } %>
+
+      <% if(locals.largeplates && locals.largeplates.length > 0){ %>  
+        <li class="header-row">Large Plates</li>
+        <% locals.largeplates.forEach((item, i) => { %>
+          <%- include('partials/fooditem', {food: item}) %>
+        <% }) %>
+      <% } %> 
+
+      <% if(locals.dessert && locals.dessert.length > 0){ %> 
+        <li class="header-row">Desserts</li>
+        <% locals.dessert.forEach((item, i) => { %>
+          <%- include('partials/fooditem', {food: item}) %>
+        <% }) %>
+      <% } %>
+
+    </ul>
+
+  </div>
 
 <%- include('partials/footer') %>

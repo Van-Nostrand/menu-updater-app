@@ -1,10 +1,9 @@
 <%- include('partials/header') %>
 
   <div>Edit Item</div>
-  <% if(beer){ %>
-    <% console.log("updateItem") %>
+  <% if(locals.beer){ %>
     <%- include('./partials/beeritem', {beer,mode: "edit"}) %>
-  <% } else if(food) { %>
+  <% } else if(locals.food) { %>
     <%- include('./partials/fooditem', {food, mode: "edit"}) %>
   <% } %>
 

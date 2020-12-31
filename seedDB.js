@@ -41,29 +41,41 @@ const fooddata = [
     notes: "Fries, gravy, chunky cheese, garnished with a Fleur De Lis",
     price: 12,
     diet: "It's not healthy for anyone",
-    itemType: "food"
+    itemType: "food",
+    menuSection: "small"
   },
   {
     name: "Burger",
     notes: "Bun, beef, cheese",
     price: 20,
     diet: "straight up diabetes",
-    itemType: "food"
+    itemType: "food",
+    menuSection: "large"
   },
   {
     name: "Spaghetti and Meatballs",
     notes: "made with your moms special sauce",
     price: 22,
     diet: "It'sa reala goodeh!",
-    itemType: "food"
+    itemType: "food",
+    menuSection: "large"
   },
   {
     name: "side salad",
     notes: "greens, tomato, vinaigrette",
     price: 8,
     diet: "gluten free",
-    itemType: "food"
+    itemType: "food",
+    menuSection: "side"
   },
+  {
+    name: "fries",
+    notes: "comes with aioli",
+    price: 5,
+    diet: "gluten free",
+    itemType: "food",
+    menuSection: "start"
+  }
 ]
 
 async function seedDB(){

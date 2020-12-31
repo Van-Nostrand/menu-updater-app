@@ -39,6 +39,23 @@
 .beer-edit-form input{
   grid-row: 2;
 }
+
+.create-beer-form{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.create-beer-form label{
+  grid-row: 1;
+}
+
+.create-beer-form input{
+  grid-row: 2;
+}
+
+.create-beer-form button{
+  grid-row: 3;
+}
 /* 
 .drinks-menu{
   position: relative;

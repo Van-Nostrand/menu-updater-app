@@ -7,6 +7,7 @@ const { createBeer, getAllBeers, updateBeer, deleteBeer, editBeer } = require(".
 router.route("/")
   .get(getAllBeers, function(req,res,next){
     let created;
+    // not sure this is efficient
     if(req.session.created){
       created = req.session.created;
       req.session.created = null;
@@ -18,20 +19,20 @@ router.route("/")
 // CREATE A BEER
 router.route("/create")
   .get(function(req,res,next){
-    res.render("createbeer")
+    res.render("creators/createbeer")
   })
   .post(createBeer, function(req,res){
     res.redirect("/beer");
   });
 
-// EDIT ALL BEER
-router.route("/edit")
+// EDIT ALL BEER - depreciated
+router.route("/edit") 
   .get(getAllBeers, function(req,res){
     res.locals.mode = "edit"
     res.render("allbeers", {allItems: res.locals.allbeers, category: "Beers"});
   });
 
-// EDIT ONE BEER - get route not currently used
+// EDIT ONE BEER 
 router.route("/edit/:beer_id")
   .get(editBeer, function(req,res){ 
     res.render("updateItem")

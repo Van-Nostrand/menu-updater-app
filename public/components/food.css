@@ -91,7 +91,11 @@
   grid-row: 1;
 }
 
-.food-edit-form input, .create-food-form input, .create-food-form select{
+.food-edit-form input, 
+.food-edit-form textarea, 
+.create-food-form input, 
+.create-food-form select
+.create-food-form textarea{
   grid-row: 2;
 }
 

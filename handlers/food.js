@@ -26,7 +26,7 @@ exports.createFood = async function(req,res,next){
 }
 
 // /edit/:food_id?_method=PUT
-exports.updateFood = async function(req, res, next){  
+exports.updateFood = async function(req, res, next){
   try{
     res.locals.updatedFood = await db.Food.findOneAndUpdate({_id: req.params.food_id}, req.body);
     next();

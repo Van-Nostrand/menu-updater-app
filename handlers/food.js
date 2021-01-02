@@ -4,13 +4,31 @@ const db = require("../models");
 exports.getAllFood = async function(req, res, next){
   try{
     res.locals.allfood = await db.Food.find();
-    console.log(res.locals.allfood)
     res.locals.created = null;
     next();
     
   }catch(err){
     return next(err);
   }
+}
+
+// /food GET pt2
+exports.sortAllFood = function(req,res,next){
+  res.locals.sides = [];
+  res.locals.starters = [];
+  res.locals.smallplates = [];
+  res.locals.largeplates = [];
+  res.locals.dessert = [];
+
+  res.locals.allfood.forEach(item => {
+    if(item.menuSection === "side") res.locals.sides.push(item);
+    else if(item.menuSection === "start") res.locals.starters.push(item);
+    else if(item.menuSection === "small") res.locals.smallplates.push(item);
+    else if(item.menuSection === "large") res.locals.largeplates.push(item);
+    else if(item.menuSection === "dessert") res.locals.dessert.push(item);
+  });
+  
+  next();
 }
 
 // /food/create POST

@@ -16,7 +16,7 @@ const beerSchema = new mongoose.Schema({
     required: true
   },
   pour1price: {
-    type: Number,
+    type: String,
     required: true
   },
   pour2: {
@@ -24,7 +24,7 @@ const beerSchema = new mongoose.Schema({
     required: false
   },
   pour2price: {
-    type: Number,
+    type: String,
     required: false
   }, 
   pour3: {
@@ -32,7 +32,7 @@ const beerSchema = new mongoose.Schema({
     required: false
   },
   pour3price: {
-    type: Number,
+    type: String,
     required: false
   },
   itemType: {

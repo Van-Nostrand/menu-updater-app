@@ -5,11 +5,20 @@
       <label for="name">Item Name</label>
       <input name="name" type="text" value="<%= food.name %>">
       <label for="notes">Item Notes</label>
-      <input name="notes" type="text" value="<%= food.notes %>">
+      <textarea name="notes" ><%= food.notes %></textarea>
       <label for="price">Item Price</label>
-      <input name="price" type="number" value="<%= food.price %>">
+      <input name="price" type="text" value="<%= food.price %>">
       <label for="diet">Item Dietary Notes</label>
       <input name="diet" type="text" value="<%= food.diet %>">
+      <label for="section">Menu section</label>
+      <select name="section" >
+        <option value="side">side</option>
+        <option value="start">snacks</option>
+        <option value="small">small plates</option>
+        <option value="large">large plates</option>
+        <option value="dessert">dessert</option>
+        <option value="feature">feature item</option>
+      </select>
       <button type="submit">Update this item</button>
     </form>
 

@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+  <form class="create-food-form" action="/food/create" method="POST" >
+    <label for="name">Item name</label>
+    <input name="name" type="text" >
+    <label for="price">Item price</label>
+    <input name="price" type="text" >
+    <label for="notes">Item description</label>
+    <input name="notes" type="text" >
+    <label for="diet">Dietary notes</label>
+    <input name="diet" type="text" >
+    <button >create item</button>
+  </form>
+
+<%- include('../partials/footer') %>

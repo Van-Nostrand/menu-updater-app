@@ -6,6 +6,7 @@ const express         = require('express'),
       axios           = require("axios"),
       path            = require("path"),
       cors            = require("cors"),
+      sass            = require('sass'),
       methodOverride  = require("method-override"),
       beerRoutes      = require("./routes/beer"),
       foodRoutes      = require("./routes/food"),
@@ -21,8 +22,22 @@ const db = require("./models");
 //use to reset the database for development
 // seedDB();
 
-// express configuration
-// app.use(cookieParser());
+sass.render({
+  file: path.join(__dirname, "scss/index.scss"),
+  outFile: path.join(__dirname, 'public/index.css'), 
+},
+  function(err, result){
+    if(err) {
+      console.log("error in sass.render")
+      console.log(err);
+    }
+    else {
+      console.log("sass seems to be working");
+    }
+  }
+)
+
+
 app.use(session({
   secret: "ITS A DAMN SECRET", 
   resave: false, 
@@ -34,7 +49,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname,"/public")));
+app.use(express.static(path.join(__dirname,"public")));
 
 // error handling
 app.use(function(err, req, res, next) {

@@ -1,0 +1,5 @@
+{
+  "events": {
+    "restart": "sass scss/index.scss:public/index.css"
+  }
+}

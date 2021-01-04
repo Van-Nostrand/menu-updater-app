@@ -1,3 +1,7 @@
+@use "abstracts/mixins.scss" as *;
+@use "components/beer.scss";
+@use "components/food.scss";
+
 *,
 *::after,
 *::before{
@@ -6,15 +10,44 @@
   box-sizing: inherit;
 }
 
-div{
-  color: black;
+li{
+  list-style: none;
+  width: 100%;
+}
+
+ul {
+  position: relative;
+  // width: 30%;
+}
+
+html{
+  font-family: sans-serif;
+
+  @include respond(tab-land){  // width < 1200
+    font-size: 56.25%;
+  }
+  @include respond(tab-port){  // width < 900?
+    font-size: 50%;
+  }
+  @include respond(phone){
+    font-size: 40%;
+    letter-spacing: 0.01rem;
+  }
   
-  li{
-    color: yellow;
-    position: relative;
+  @include respond(desktop){
+    font-size: 66%;
+  }
+  @include respond(big-desk){  // width > 1800
+    font-size: 75%;
   }
 }
 
+nav{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  width: 100vw;
+}
 
 nav a {
   text-decoration: none;
@@ -29,7 +62,6 @@ nav a:visited{ color: #2f566a; }
 nav a:active{ color: #3e738e; }
 
 .main-container{
-  width: 100vw;
   position: relative;
   margin: 0 auto;
   
@@ -37,3 +69,8 @@ nav a:active{ color: #3e738e; }
   flex-flow: column;
   align-items: center;
 }
+
+.item-name{
+  font-size: 1.3em;
+}
+

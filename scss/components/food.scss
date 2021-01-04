@@ -7,6 +7,45 @@
   grid-template-columns: repeat(2, 2fr) 1fr;
   grid-template-rows: repeat(2, 2fr) 1fr;
   row-gap: 0.1rem;
+
+  .item-name{
+    display: inline-block;
+    
+    letter-spacing: 0;
+    grid-column: 1 / span 2;
+    grid-row: 1 ;
+    justify-self: start;
+  }
+  
+  .item-price{
+    display: inline-block;
+    grid-column: 2;
+    grid-row: 1;
+    padding-right: 0.7rem;
+  
+    text-align: end;
+  } 
+    
+  .item-notes{
+    justify-self: start;
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .item-diet{
+    grid-row: 3;
+    grid-column: 1 / span 2;
+    font-style: italic;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+  
+  a{
+    justify-self: center;
+  }
 }
 
 .food-item::after{
@@ -20,44 +59,7 @@
   bottom: -0.4rem;
 }
 
-.food-item .item-name{
-  display: inline-block;
-  
-  letter-spacing: 0;
-  grid-column: 1 / span 2;
-  grid-row: 1 ;
-  justify-self: start;
-}
 
-.food-item .item-price{
-  display: inline-block;
-  grid-column: 2;
-  grid-row: 1;
-  padding-right: 0.7rem;
-
-  text-align: end;
-} 
-  
-.food-item .item-notes{
-  justify-self: start;
-  grid-column: 1 / span 2;
-  grid-row: 2;
-
-  font-weight: 100;
-  font-style: italic;
-}
-
-.food-item .item-diet{
-  grid-row: 3;
-  grid-column: 1 / span 2;
-  font-style: italic;
-  font-weight: 400;
-  opacity: 0.8;
-}
-
-.food-item a{
-  justify-self: center;
-}
 
 .food-edit-form, .create-food-form {
   grid-row: 1 / span 3;
@@ -66,10 +68,14 @@
    position: relative;
   display: grid;
   grid-template-rows: auto auto auto;
-}
 
-.food-edit-form label, .create-food-form label{
-  grid-row: 1;
+  button{
+    grid-row: 3;
+  }
+
+  label{
+    grid-row: 1;
+  }
 }
 
 .food-edit-form *{
@@ -88,8 +94,4 @@
 .create-food-form select
 .create-food-form textarea{
   grid-row: 2;
-}
-
-.food-edit-form button, .create-food-form button{
-  grid-row: 3;
 }

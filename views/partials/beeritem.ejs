@@ -5,32 +5,63 @@
     <% console.log(beer.name) %>
     
     
-    <form class="beer-edit-form" action="<%= `/beers/edit/${beer.id}` %>?_method=PUT" method="POST">
+    <form class="beer-edit-form" action="<%= `/beer/edit/${beer.id}` %>?_method=PUT" method="POST">
       <label for="name">Item Name</label>
       <input name="name" type="text" value="<%= beer.name %>">
+
       <label for="pour1">Large Pour Size</label>
-      <input name="pour1" type="number" value="<%= beer.pour1 %>">
+      <input name="pour1" type="text" pattern="^\d*\.?\d*$" value="<%= beer.pour1 %>">
       <label for="pour1price">Large Pour Price</label>
-      <input name="pour1price" type="number" value="<%= beer.pour1price %>">
+      <input name="pour1price" type="text" pattern="^\d*\.?\d*$" value="<%= beer.pour1price %>">
+
+      <label for="pour2">medium Pour Size</label>
+      <input name="pour2" type="text" onkeypress="" value="<%= locals.beer.pour2 ? locals.beer.pour2 : 0 %>">
+      <label for="pour2price">medium Pour Price</label>
+      <input name="pour2price" type="text" onkeypress="" value="<%= locals.beer.pour2price ? locals.beer.pour2price : 0 %>">
+
+      <label for="pour3">flight Pour Size</label>
+      <input name="pour3" type="text" onkeypress="" value="<%= locals.beer.pour3 ? locals.beer.pour3 : 0 %>">
+      <label for="pour3price">flight Pour Price</label>
+      <input name="pour3price" type="text" onkeypress="" value="<%= locals.beer.pour3price ? locals.beer.pour3price : 0 %>">
       <button type="submit">update this item</button>
     </form>
 
-    <form class="beer-delete-form" action="<%= `/beers/edit/${beer.id}` %>?_method=DELETE" method="POST">
+    <form class="beer-delete-form" action="<%= `/beer/edit/${beer.id}` %>?_method=DELETE" method="POST">
       <button type="submit">delete</button>
     </form>
 
   <% } else { %>
-    <div className="item-name">
+    <div class="item-name">
       <%= beer.name %>
     </div>
 
-    <div className="item-pour1">
-      <%= beer.pour1 %>oz
+    <div class="item-pour1">
+      Large size: <%= beer.pour1 %>oz
     </div>
     
-    <div className="item-pour1price">
-      <%= beer.pour1price %>
+    <div class="item-pour1price">
+      Price: $<%= beer.pour1price %>
     </div>
+
+    <% if(locals.beer.pour2){ %> 
+      <div class="item-pour2">
+        Medium size: <%= beer.pour2 %>oz
+      </div>
+      
+      <div class="item-pour2price">
+        Price: $<%= beer.pour2price %>
+      </div>
+    <% } %>
+
+    <% if(locals.beer.pour3){ %>  
+      <div class="item-pour3">
+        Flight pour: <%= beer.pour3 %>oz
+      </div>
+      
+      <div class="item-pour3price">
+        Price: $<%= beer.pour3price %>
+      </div>
+    <% } %> 
 
     <a href="<%= `/beer/edit/${beer.id}` %>">edit</a>
   <% } %>

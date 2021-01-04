@@ -220,32 +220,32 @@ const desserts = [
 const beerdata = [
   {
     name: "Deschutes Mirror Pond",
-    pour1: 14,
-    pour1price: 8.5,
+    pour1: "14",
+    pour1price: "8.5",
     itemType: "beer"
   },
   {
     name: "Steamworks Pilsner",
-    pour1: 20,
-    pour1price: 6.5,
+    pour1: "20",
+    pour1price: "6.5",
     itemType: "beer"
   },
   {
     name: "Lost Coast Tangerine Wheat Ale",
-    pour1: 14,
-    pour1price: 8.5,
+    pour1: "14",
+    pour1price: "8.5",
     itemType: "beer"
   },
   {
     name: "Gigantic LP Stout",
-    pour1: 14,
-    pour1price: 8.5,
+    pour1: "14",
+    pour1price: "8.5",
     itemType: "beer"
   },
   {
     name: "Barnside Pale",
-    pour1: 16,
-    pour1price: 7,
+    pour1: "16",
+    pour1price: "7",
     itemType: "beer"
   }
 ]

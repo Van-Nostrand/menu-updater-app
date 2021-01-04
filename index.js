@@ -10,6 +10,7 @@ const express         = require('express'),
       beerRoutes      = require("./routes/beer"),
       foodRoutes      = require("./routes/food"),
       mainRoutes      = require("./routes/main"),
+      externalRoutes  = require("./routes/external");
       seedDB          = require("./seedDB"),
       PORT            = 8000;
 
@@ -49,6 +50,7 @@ app.use(function(err, req, res, next) {
 app.use("/beer", beerRoutes);
 app.use("/food", foodRoutes);
 app.use("/", mainRoutes);
+app.use("/api/", externalRoutes);
 
 app.listen(PORT, () => {
   console.log(`app running on port ${PORT}`);

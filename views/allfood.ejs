@@ -1,18 +1,17 @@
 <%- include('partials/header') %>
-  <div class="food-container">
 
+  <div class="food-container">
 
     <!-- if we just finished creating an item, note that here -->
     <% if(created){ %>
       <div>successfully created <%= created.name %></div> 
     <% } %>
     
-
     <ul class="allfood-list">  
 
-      <% if(locals.features && locals.features.length > 0){ %> 
+      <% if(locals.feature && locals.feature.length > 0){ %> 
         <li class="header-row">Features</li>
-        <% locals.features.forEach((item, i) => { %>
+        <% locals.feature.forEach((item, i) => { %>
           <%- include('partials/fooditem', {food: item}) %> 
         <% }) %>
       <% } %>

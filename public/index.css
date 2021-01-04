@@ -4,10 +4,12 @@
   grid-template-rows: 1fr 1fr 1fr 1fr;
   justify-self: center;
   margin: 0.3rem 0;
+  font-size: 2rem;
 }
 .beer-item .item-name {
   grid-column: 1/span 2;
   justify-self: start;
+  font-size: 1.5em;
 }
 .beer-item .item-pour1 {
   grid-row: 2;
@@ -229,10 +231,6 @@ nav a:active {
   display: flex;
   flex-flow: column;
   align-items: center;
-}
-
-.item-name {
-  font-size: 1.3em;
 }
 
 /*# sourceMappingURL=index.css.map */

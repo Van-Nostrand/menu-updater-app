@@ -19,9 +19,11 @@ exports.sortAllFood = function(req,res,next){
   res.locals.smallplates = [];
   res.locals.largeplates = [];
   res.locals.dessert = [];
+  res.locals.feature = [];
 
   res.locals.allfood.forEach(item => {
     if(item.menuSection === "side") res.locals.sides.push(item);
+    else if(item.menuSection === "feature") res.locals.feature.push(item);
     else if(item.menuSection === "start") res.locals.starters.push(item);
     else if(item.menuSection === "small") res.locals.smallplates.push(item);
     else if(item.menuSection === "large") res.locals.largeplates.push(item);

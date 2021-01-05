@@ -6,14 +6,10 @@ const { createBeer, getAllBeers, updateBeer, deleteBeer, editBeer } = require(".
 // VIEW ALL BEERS
 router.route("/")
   .get(getAllBeers, function(req,res,next){
-    let created;
-    // not sure this is efficient
-    if(req.session.created){
-      created = req.session.created;
-      req.session.created = null;
-    }
+  
+   
     res.locals.mode = "display";
-    res.render("allbeers", {allItems: res.locals.allbeers, category: "Beers", created})
+    res.render("allbeers", {allItems: res.locals.allbeers, category: "Beers"})
   });
 
 // CREATE A BEER

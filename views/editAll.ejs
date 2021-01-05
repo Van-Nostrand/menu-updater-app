@@ -1,9 +1,7 @@
 <%- include('partials/header') %>
 
   <div><%= category %></div>
-  <% if(created !== undefined){ %>
-    <div>successfully created <%= created %></div> 
-  <% } %>
+ 
   <div>edit items</div>
   <% allItems.forEach((item, i) => { %>
     <% if(item.itemType === "beer"){ %>

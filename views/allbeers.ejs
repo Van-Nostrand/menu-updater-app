@@ -1,9 +1,7 @@
 <%- include('partials/header') %>
 
   <div><%= category %></div>
-  <% if(created){ %>
-    <div>successfully created <%= created.name %></div> 
-  <% } %>
+
   <ul>
     <% allItems.forEach((item, i) => { %>
       <%- include('./partials/beeritem', { beer: item }) %>

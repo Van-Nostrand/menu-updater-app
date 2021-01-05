@@ -1,9 +1,6 @@
 const express         = require('express'),
       app             = express(),
-      session         = require('express-session'),
       bodyParser      = require("body-parser"),
-      cookieParser    = require('cookie-parser'),
-      axios           = require("axios"),
       path            = require("path"),
       cors            = require("cors"),
       methodOverride  = require("method-override"),
@@ -22,12 +19,6 @@ const db = require("./models");
 //use to reset the database for development
 // seedDB();
 
-app.use(session({
-  secret: "ITS A DAMN SECRET", 
-  resave: false, 
-  saveUninitialized: false, 
-  cookie: { sameSite: 'strict'}
-}));
 app.use(methodOverride("_method"));
 app.use(cors());
 app.use(bodyParser.json());
@@ -52,7 +43,7 @@ app.use("/food", foodRoutes);
 app.use("/", mainRoutes);
 app.use("/api/", externalRoutes);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 8000, () => {
   console.log(`app running on port ${PORT}`);
 });
 

@@ -24,3 +24,6 @@ mongoose.connect(
 
 module.exports.Beer = require('./beer');
 module.exports.Food = require("./food");
+
+// databaseManager
+// 9Zhn7npViUeCW98

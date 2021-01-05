@@ -11,7 +11,6 @@ const express         = require('express'),
       seedDB          = require("./seedDB"),
       PORT            = 8000;
 
-
 //--------------------------------------------
 // SEE MODELS/INDEX FOR MONGOOSE CONFIG
 const db = require("./models");

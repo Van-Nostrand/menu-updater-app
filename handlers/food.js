@@ -37,7 +37,6 @@ exports.sortAllFood = function(req,res,next){
 exports.createFood = async function(req,res,next){
   try{
     let food = await db.Food.create({...req.body, itemType: "food"});
-    req.session.created = food;
 
     next();
   } catch(err){

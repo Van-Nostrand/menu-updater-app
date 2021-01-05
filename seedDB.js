@@ -325,6 +325,7 @@ async function seedDB(){
         }
       })
     })
+
     await smallplates.forEach(function(seed){
       Food.create(seed, function(err, data){
         if(err){
@@ -335,6 +336,7 @@ async function seedDB(){
         }
       })
     }) 
+
     await largeplates.forEach(function(seed){
       Food.create(seed, function(err, data){
         if(err){
@@ -345,6 +347,7 @@ async function seedDB(){
         }
       })
     })
+    
     await desserts.forEach(function(seed){
       Food.create(seed, function(err, data){
         if(err){

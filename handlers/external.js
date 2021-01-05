@@ -7,12 +7,10 @@ exports.exportMenuData = async function(req, res, next){
   try{
     let allbeer = await db.Beer.find();
     let allfood = await db.Food.find();
-    res.locals.wholeMenu = {...allbeer, ...allfood};
+    res.locals.wholeMenu = [allbeer, allfood];
     
     next();
   } catch(err){
     console.log(err);
   }
-
 }
-

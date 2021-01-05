@@ -1,9 +1,7 @@
 <%- include('partials/header') %>
 
   <div><%= category %></div>
-  <% if(created !== undefined){ %>
-    <div>successfully created <%= created %></div> 
-  <% } %>
+
   <% allItems.forEach((item, i) => { %>
     <div class="item-name">
       <%= item.name %>

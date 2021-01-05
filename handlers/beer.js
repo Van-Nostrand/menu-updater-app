@@ -15,7 +15,6 @@ exports.getAllBeers = async function(req, res, next){
 exports.createBeer = async function(req,res,next){
   try{
     let beer = await db.Beer.create({...req.body, itemType: "beer"});
-    req.session.created = beer;
     next();
   } catch(err){
     return next(err);

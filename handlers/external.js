@@ -3,7 +3,7 @@ const axios = require('axios');
 
 // export to external api
 exports.exportMenuData = async function(req, res, next){
-  console.log("external request!")
+  // console.log("external request!")
   try{
     let allbeer = await db.Beer.find();
     let allfood = await db.Food.find();

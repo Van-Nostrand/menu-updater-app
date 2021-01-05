@@ -14,17 +14,16 @@ const MONGODB_OPTIONS = {
   useUnifiedTopology: true,
   useCreateIndex: true
 }
-// const URL = `mongodb://${MONGODB_CURRENT_IP}:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
-const URL = `mongodb://localhost:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
-// const URL = `mongodb+srv://databaseManager:9Zhn7npViUeCW98@cluster0.pchwe.mongodb.net/Cluster0?retryWrites=true&w=majority`;
+const URL = `mongodb://${MONGODB_CURRENT_IP}:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
+// const URL = `mongodb://localhost:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
+// const URL = `mongodb+srv://databaseManager:9Zhn7npViUeCW98@cluster0.pchwe.mongodb.net/restaurant?retryWrites=true&w=majority`;
 
 mongoose.connect(
   process.env.MONGODB_URI || URL,
+  // process.env.MONGODB_URI,
   MONGODB_OPTIONS
 );
 
 module.exports.Beer = require('./beer');
 module.exports.Food = require("./food");
-
-// databaseManager
-// 9Zhn7npViUeCW98
+module.exports.Wine = require("./wine");

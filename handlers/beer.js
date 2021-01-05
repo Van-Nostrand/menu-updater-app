@@ -14,7 +14,7 @@ exports.getAllBeers = async function(req, res, next){
 // /beers/create POST
 exports.createBeer = async function(req,res,next){
   try{
-    let beer = await db.Beer.create({...req.body, itemType: "beer"});
+    await db.Beer.create({...req.body, itemType: "beer"});
     next();
   } catch(err){
     return next(err);
@@ -24,7 +24,6 @@ exports.createBeer = async function(req,res,next){
 // /edit/:beer_id?_method=PUT
 exports.updateBeer = async function(req, res, next){  
   try{
-    console.log(req.params.beer_id);
     res.locals.updatedBeer = await db.Beer.findOneAndUpdate({_id: req.params.beer_id}, req.body);
     next();
   } catch(err){

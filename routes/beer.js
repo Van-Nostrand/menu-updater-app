@@ -21,13 +21,6 @@ router.route("/create")
     res.redirect("/beer");
   });
 
-// EDIT ALL BEER - depreciated
-router.route("/edit") 
-  .get(getAllBeers, function(req,res){
-    res.locals.mode = "edit"
-    res.render("allbeers", {allItems: res.locals.allbeers, category: "Beers"});
-  });
-
 // EDIT ONE BEER 
 router.route("/edit/:beer_id")
   .get(editBeer, function(req,res){ 

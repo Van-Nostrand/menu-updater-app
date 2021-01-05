@@ -5,6 +5,8 @@
     <%- include('./partials/beeritem', {beer,mode: "edit"}) %>
   <% } else if(locals.food) { %>
     <%- include('./partials/fooditem', {food, mode: "edit"}) %>
-  <% } %>
+  <% } else if(locals.wine) { %>
+    <%- include('./partials/wineitem', {wine, mode: "edit"}) %>
+  <% } %> 
 
 <%- include('partials/footer') %>

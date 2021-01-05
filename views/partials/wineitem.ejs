@@ -1,0 +1,74 @@
+<li class="wine-item">
+
+  <% if(mode === "edit"){ %>
+    <% console.log("wine edit mode") %>
+
+    <form class="wine-edit-form" action="<%= `/wine/edit/${wine.id}` %>?_method=PUT" method="POST"></form>
+      <label for="brandname">Brand Name</label>
+      <input name="brandname" type="text" value="<%= wine.brandname %>">
+      
+      <label for="productname">Product Name</label>
+      <input name="productname" type="text" value="<%= wine.productname %>">
+
+      
+      <label for="region">Region</label>
+      <input name="region" type="text" value="<%= wine.region %>">
+
+      <label for="fiveozprice">5oz price</label>
+      <input name="fiveozprice" type="text" pattern="^\d*\.?\d*$" value="<%= wine.fiveozprice %>">
+
+      <label for="eightozprice">8oz price</label>
+      <input name="eightozprice" type="text" pattern="^\d*\.?\d*$" value="<%= wine.eightozprice %>">
+
+      <label for="bottleprice">Bottle price</label>
+      <input name="bottleprice" type="text" onkeypress="" value="<%= locals.wine.bottleprice ? locals.wine.bottleprice : 0 %>">
+
+      <label for="style">style</label>
+      <select name="style" >
+        <option value="red">red</option>
+        <option value="white">white</option>
+        <option value="rose">rose</option>
+        <option value="bubbly">bubbly</option>
+        <option value="other">other</option>
+      </select>
+
+      <button type="submit">update this item</button>
+    </form>
+
+    <form class="wine-delete-form" action="<%= `/wine/edit/${wine.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete</button>
+    </form>
+
+  <% } else { %>
+    <div class="wine-brandname item-name">
+      <%= wine.brandname %>
+    </div>
+    
+    <div class="wine-productname">
+      <%= wine.productname %>
+    </div>
+    <div class="wine-region">
+      <%= wine.region %>oz
+    </div>
+    <div class="wine-fiveozprice item-price">
+      <%= wine.fiveozprice %>
+    </div>
+
+    <% if(wine.eightozprice){ %> 
+      <div class="wine-eightozprice item-price">
+        <%= wine.eightozprice %>
+      </div>
+    <% } %> 
+    
+    <div class="wine-bottleprice item-price">
+      <%= wine.bottleprice %>oz
+    </div>
+    
+    <div class="wine-style">
+      <%= wine.style %>
+    </div> 
+
+    <a href="<%= `/wine/edit/${wine.id}` %>">edit</a>
+  <% } %>
+  
+</li>

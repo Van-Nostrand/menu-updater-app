@@ -70,7 +70,7 @@ const smallplates = [
     notes: "Corn, soy bean, herbs, spicy black garlic aioli",
     diet: "dairy free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Roasted Organic Carrot and Brussel Sprouts Salad",
@@ -78,7 +78,7 @@ const smallplates = [
     notes: "Carrots, brussel sprouts, radish, sunflower seeds, double smoked bacon vinaigrette",
     diet: "gluten free",
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Craft Poutine",
@@ -86,7 +86,7 @@ const smallplates = [
     notes: "Double-cooked Felix Farm Kennebec potatoes, Quebec cheese curds, house-made chicken gravy",
     diet: "", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Pacific Humboldt Squid",
@@ -94,7 +94,7 @@ const smallplates = [
     notes: "Tomato, leeks, garlic, chilis, herbs",
     diet: "gluten and dairy free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Fraser Valley Pork Belly",
@@ -102,7 +102,7 @@ const smallplates = [
     notes: "Seared pork belly, house pickles, green onions, smoked onion jam",
     diet: "gluten and dairy free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Westcoast Crab Dip",
@@ -110,7 +110,7 @@ const smallplates = [
     notes: "Bacon, leeks, herbs, house bread",
     diet: "", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Farmcrest Wings",
@@ -118,7 +118,7 @@ const smallplates = [
     notes: "1lb of wings, daikon, carrots, celery, garlic chili butter sauce",
     diet: "gluten free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
   {
     name: "Cache Creek Beef Tartar",
@@ -126,7 +126,7 @@ const smallplates = [
     notes: "Black garlic, celery, radish, egg yolk, shallots, toast",
     diet: "dairy free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "omni"
   },
 
   {
@@ -135,7 +135,7 @@ const smallplates = [
     notes: "Broccoli, kale, cashews, garlic, herbs",
     diet: "vegan, gluten free, contains nuts", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "herb"
   },
   {
     name: "B.C. Kale Salad",
@@ -143,7 +143,7 @@ const smallplates = [
     notes: "Tomato, radish, pumpkin seeds, balsamic soy dressing",
     diet: "vegan, gluten free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "herb"
   },
   {
     name: "Cauliflower Soup",
@@ -151,7 +151,7 @@ const smallplates = [
     notes: "Cauliflower, cheddar crumble",
     diet: "vegetarian",
     itemType: "food",
-    menuSection: "small"
+    menuSection: "herb"
   },
   {
     name: '"Fried Rice"',
@@ -159,7 +159,7 @@ const smallplates = [
     notes: "Mushrooms, gai lan, corn, shallots, sesame sauce",
     diet: "vegan, gluten free", 
     itemType: "food",
-    menuSection: "small"
+    menuSection: "herb"
   }
 ];
 

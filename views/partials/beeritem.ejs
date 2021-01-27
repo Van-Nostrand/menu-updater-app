@@ -1,9 +1,6 @@
 <li class="beer-item">
 
-  <% if(mode === "edit"){ %>
-    <% console.log("beer edit mode") %>
-    <% console.log(beer.name) %>
-    
+  <% if(mode === "edit"){ %>    
     
     <form class="beer-edit-form" action="<%= `/beer/edit/${beer.id}` %>?_method=PUT" method="POST">
       <label for="name">Item Name</label>

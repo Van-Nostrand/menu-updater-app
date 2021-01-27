@@ -24,7 +24,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname,"public")));
-// app.use(express.static(path.join(__dirname)))
 
 // error handling
 app.use(function(err, req, res, next) {
@@ -34,7 +33,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  console.log(err);
+  // console.log(err);
 });
 
 // define routes
@@ -44,6 +43,6 @@ app.use("/", mainRoutes);
 app.use("/api/", externalRoutes);
 
 app.listen(process.env.PORT || 8000, () => {
-  console.log(`app running on port ${PORT}`);
+  console.log(`app running`);
 });
 

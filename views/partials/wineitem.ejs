@@ -1,7 +1,6 @@
 <li class="wine-item">
 
   <% if(mode === "edit"){ %>
-    <% console.log("wine edit mode") %>
 
     <form class="wine-edit-form" action="<%= `/wine/edit/${wine.id}` %>?_method=PUT" method="POST"></form>
       <label for="brandname">Brand Name</label>

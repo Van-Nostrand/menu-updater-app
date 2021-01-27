@@ -16,11 +16,11 @@ const MONGODB_OPTIONS = {
 }
 // const URL = `mongodb://${MONGODB_CURRENT_IP}:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
 // const URL = `mongodb://localhost:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
-// const URL = `mongodb+srv://databaseManager:9Zhn7npViUeCW98@cluster0.pchwe.mongodb.net/restaurant?retryWrites=true&w=majority`;
+const URL = `mongodb+srv://databaseManager:9Zhn7npViUeCW98@cluster0.pchwe.mongodb.net/restaurant?retryWrites=true&w=majority`;
 
 mongoose.connect(
-  // process.env.MONGODB_URI || URL,
-  process.env.MONGODB_URI,
+  process.env.MONGODB_URI || URL,
+  // process.env.MONGODB_URI,
   MONGODB_OPTIONS
 );
 

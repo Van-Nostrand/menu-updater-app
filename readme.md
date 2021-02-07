@@ -2,6 +2,10 @@
 
 This will be used to create, edit and delete menu items in a restaurant database
 
+CURRENT TODO
+- add schema for spirits, cocktails, and non-alcoholic
+- build interfaces for them
+
 mongoadmin
 fixie6187kida
 "serverKey" : "jcZWLiFUfrKv/Dnxr/4iu4iIHhA="

@@ -11,7 +11,10 @@ const express         = require('express'),
       beerRoutes      = require("./routes/beer"),
       foodRoutes      = require("./routes/food"),
       mainRoutes      = require("./routes/main"),
-      externalRoutes  = require("./routes/external");
+      cocktailRoutes  = require('./routes/cocktail'),
+      spiritRoutes    = require('./routes/spirit'),
+      nonalcRoutes    = require('./routes/nonalc'),
+      externalRoutes  = require("./routes/external"),
       seedDB          = require("./seedDB"),
       PORT            = 8000;
 
@@ -49,6 +52,9 @@ app.use(function(err, req, res, next) {
 // TODO - rename and redefine these routes to things that make more sense
 app.use("/beer", beerRoutes);     // REQUIRES AUTH. backend view/edit beer
 app.use("/food", foodRoutes);     // REQUIRES AUTH. backend view/edit food
+app.use('/cocktail', cocktailRoutes);
+app.use('/spirit', spiritRoutes);
+app.use('/nonalc', nonalcRoutes);
 app.use("/", mainRoutes);         // customers accessing the frontend
 app.use("/api/", externalRoutes); // DOES NOT REQUIRE AUTH. path for frontend to get menu data
 app.use('/api/auth', authRoutes); // AUTH 4 LYFE

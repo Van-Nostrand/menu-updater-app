@@ -5,7 +5,7 @@ const spiritSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxLength: 50,
-    unique: true
+    unique: false,
   },
   productname: {
     type: String,

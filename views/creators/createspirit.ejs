@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+
+  <form class="spirit-create-form" action="/spirit/create" method="POST">
+
+    <label for="brandname">brand name</label>
+    <input name="brandname" type="text" >
+    
+    <label for="productname">product name</label>
+    <input name="productname" type="text" >
+  
+    <label for="style">style</label>
+    <input name="style" type="text" >
+
+    <label for="singleprice">single price</label>
+    <input name="singleprice" type="text" pattern="^\d*\.?\d*$" >
+
+    <label for="doubleprice">double price</label>
+    <input name="doubleprice" type="text" pattern="^\d*\.?\d*$" >
+
+    <button type="submit">create item</button>
+  </form>
+  
+<%- include('../partials/footer') %>

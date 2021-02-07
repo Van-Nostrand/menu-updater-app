@@ -122,6 +122,8 @@ async function seedDB(){
     await SPIRITS.forEach(function(seed){
       Spirit.create(seed, function(err, data){
         if(err){
+          console.log("error creating item")
+          console.log(seed);
           console.log(err);
         }
         else{
@@ -133,6 +135,8 @@ async function seedDB(){
     await COCKTAILS.forEach(function(seed){
       Cocktail.create(seed, function(err, data){
         if(err){
+          console.log("error creating item")
+          console.log(seed);
           console.log(err);
         }
         else{
@@ -144,6 +148,8 @@ async function seedDB(){
     await WINE.forEach(function(seed){
       Wine.create(seed, function(err, data){
         if(err){
+          console.log("error creating item")
+          console.log(seed);
           console.log(err);
         }
         else{
@@ -155,6 +161,8 @@ async function seedDB(){
     await NON_ALCOHOLIC.forEach(function(seed){
       Nonalc.create(seed, function(err, data){
         if(err){
+          console.log("error creating item")
+          console.log(seed);
           console.log(err);
         }
         else{

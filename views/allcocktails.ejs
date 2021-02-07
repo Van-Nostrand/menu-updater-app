@@ -1,0 +1,11 @@
+<%- include('partials/header') %>
+
+  <div><%= category %></div>
+
+  <ul>
+    <% allItems.forEach((item, i) => { %>
+      <%- include('./partials/cocktailitem', { cocktail: item }) %>
+    <% }) %>
+  </ul>
+
+<%- include('partials/footer') %>

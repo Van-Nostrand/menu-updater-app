@@ -1,0 +1,34 @@
+<li class="nonalc-item">
+
+  <% if(mode === "edit"){ %>
+
+    <form class="nonalc-edit-form" action="<%= `/nonalc/edit/${nonalc.id}` %>?_method=PUT" method="POST"></form>
+      <label for="name">Name</label>
+      <input name="name" type="text" value="<%= nonalc.name %>">
+    
+      <label for="notes">Notes</label>
+      <input name="notes" type="text" value="<%= nonalc.notes %>">
+
+      <label for="price">price</label>
+      <input name="price" type="text" pattern="^\d*\.?\d*$" value="<%= nonalc.price %>">
+
+      <button type="submit">update this item</button>
+    </form>
+
+    <form class="nonalc-delete-form" action="<%= `/nonalc/edit/${nonalc.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete</button>
+    </form>
+
+  <% } else { %>
+    <div class="nonalc-name item-name">
+      <%= nonalc.name %>
+    </div>
+  
+    <div class="nonalc-price item-price">
+      <%= nonalc.price %>
+    </div>
+
+    <a href="<%= `/nonalc/edit/${nonalc.id}` %>">edit</a>
+  <% } %>
+  
+</li>

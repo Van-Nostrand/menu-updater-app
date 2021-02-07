@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+
+    <form class="wine-create-form" action="/wine/create" method="POST">
+
+      <label for="brandname">Brand Name</label>
+      <input name="brandname" type="text" >
+      
+      <label for="productname">Product Name</label>
+      <input name="productname" type="text" >
+
+      <label for="region">Region</label>
+      <input name="region" type="text" >
+
+      <label for="fiveozprice">5oz price</label>
+      <input name="fiveozprice" type="text" pattern="^\d*\.?\d*$" >
+
+      <label for="eightozprice">8oz price</label>
+      <input name="eightozprice" type="text" pattern="^\d*\.?\d*$" >
+
+      <label for="bottleprice">Bottle price</label>
+      <input name="bottleprice" type="text" pattern="^\d*\.?\d*$" >
+
+      <label for="style">style</label>
+      <select name="style" >
+        <option value="red">red</option>
+        <option value="white">white</option>
+        <option value="rose">rose</option>
+        <option value="bubbly">bubbly</option>
+        <option value="other">other</option>
+      </select>
+
+      <button type="submit">create item</button>
+    </form>
+
+<%- include('../partials/footer') %>

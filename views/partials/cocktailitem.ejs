@@ -1,0 +1,34 @@
+<li class="cocktail-item">
+
+  <% if(mode === "edit"){ %>
+
+    <form class="cocktail-edit-form" action="<%= `/cocktail/edit/${cocktail.id}` %>?_method=PUT" method="POST"></form>
+      <label for="name">Name</label>
+      <input name="name" type="text" value="<%= cocktail.name %>">
+    
+      <label for="notes">Notes</label>
+      <input name="notes" type="text" value="<%= cocktail.notes %>">
+
+      <label for="price">price</label>
+      <input name="price" type="text" pattern="^\d*\.?\d*$" value="<%= cocktail.price %>">
+
+      <button type="submit">update this item</button>
+    </form>
+
+    <form class="cocktail-delete-form" action="<%= `/cocktail/edit/${cocktail.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete</button>
+    </form>
+
+  <% } else { %>
+    <div class="cocktail-name item-name">
+      <%= cocktail.name %>
+    </div>
+  
+    <div class="cocktail-price item-price">
+      <%= cocktail.price %>
+    </div>
+
+    <a href="<%= `/cocktail/edit/${cocktail.id}` %>">edit</a>
+  <% } %>
+  
+</li>

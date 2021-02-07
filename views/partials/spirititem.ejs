@@ -1,0 +1,41 @@
+<li class="spirit-item">
+
+  <% if(mode === "edit"){ %>
+
+    <form class="spirit-edit-form" action="<%= `/spirit/edit/${spirit.id}` %>?_method=PUT" method="POST"></form>
+
+      <label for="brandname">brand name</label>
+      <input name="brandname" type="text" value="<%= spirit.brandname %>">
+      
+      <label for="productname">product name</label>
+      <input name="productname" type="text" value="<%= spirit.productname %>">
+    
+      <label for="style">style</label>
+      <input name="style" type="text" value="<%= spirit.style %>">
+
+      <label for="singleprice">single price</label>
+      <input name="singleprice" type="text" pattern="^\d*\.?\d*$" value="<%= spirit.singleprice %>">
+
+      <label for="doubleprice">double price</label>
+      <input name="doubleprice" type="text" pattern="^\d*\.?\d*$" value="<%= spirit.doubleprice %>">
+
+      <button type="submit">update this item</button>
+    </form>
+
+    <form class="spirit-delete-form" action="<%= `/spirit/edit/${spirit.id}` %>?_method=DELETE" method="POST">
+      <button type="submit">delete</button>
+    </form>
+
+  <% } else { %>
+    <div class="spirit-name item-name">
+      <%= spirit.name %>
+    </div>
+  
+    <div class="spirit-price item-price">
+      <%= spirit.price %>
+    </div>
+
+    <a href="<%= `/spirit/edit/${spirit.id}` %>">edit</a>
+  <% } %>
+  
+</li>

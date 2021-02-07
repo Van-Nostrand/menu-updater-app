@@ -5,7 +5,7 @@ const nonalcSchema = new mongoose.Schema({
     type: String,
     required: true,
     maxLength: 50,
-    unique: true
+    unique: false
   },
   notes: {
     type: String,
@@ -25,5 +25,5 @@ const nonalcSchema = new mongoose.Schema({
 // mongodb will automatically pluralize the schema to create a collection name
 // the third argument of mongoose.model prevents mongodb from doing this
 // This is so obnoxious, I should have learned SQL
-const Nonalc = mongoose.model("Nonalc", nonalcSchema, "Nonalc");
+const Nonalc = mongoose.model("Nonalc", nonalcSchema, "nonalc");
 module.exports = Nonalc;

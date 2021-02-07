@@ -1,0 +1,16 @@
+<%- include('../partials/header') %>
+
+  <form class="cocktail-create-form" action="/cocktail/create" method="POST">
+    <label for="name">Name</label>
+    <input name="name" type="text" >
+  
+    <label for="notes">Notes</label>
+    <input name="notes" type="text" >
+
+    <label for="price">price</label>
+    <input name="price" type="text" pattern="^\d*\.?\d*$" >
+
+    <button type="submit">create this item</button>
+  </form>
+
+  <%- include('../partials/footer') %>

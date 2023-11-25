@@ -22,7 +22,8 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.13.7",
     "pm2": "^5.1.0",
-    "sass": "^1.38.0"
-  },
-  "devDependencies": {}
+    "sass": "^1.38.0",
+    "sequelize": "^6.35.1",
+    "sqlite3": "^5.1.6"
+  }
 }

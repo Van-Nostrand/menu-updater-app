@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize')
 const sequelize = require('./sql')
+const bcrypt = require('bcrypt')
 
 const User = sequelize.define('User', {
   username: {
@@ -13,25 +14,14 @@ const User = sequelize.define('User', {
     unique: true
   },
   password: {
-    type:Object,
-    allowNull: false
+    type: DataTypes.STRING,
+    allowNull: false,
+    async set (value) {
+      const hash = await bcrypt.hash(value, 10)
+      this.setDataValue('password', hash)
+    }
   }
 })
-
-// userSchema.pre('save', async function (next){
-//   try{
-//     // checks to see if this user has modified their password? maybe the signature?
-//     if(!this.isModified('password')){
-//       return next()
-//     }
-//     const hashedPassword = await bcrypt.hash(this.password, 10)
-//     this.password = hashedPassword
-//     return next()
-
-//   } catch(err){
-//     return next(err)
-//   }
-// })
 
 // userSchema.methods.comparePassword = async function (candidatePassword, next){
 //   try{

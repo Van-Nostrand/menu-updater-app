@@ -1,35 +1,35 @@
 const express = require('express')
-const router = express.Router({mergeParams: true})
+const router = express.Router({ mergeParams: true })
 
 const { createBeer, getAllBeers, updateBeer, deleteBeer, editBeer } = require('../handlers/beer')
 
 // VIEW ALL BEERS
 router.route('/')
-  .get(getAllBeers, function (req,res,next){
+  .get(getAllBeers, (req, res) => {
 
 
     res.locals.mode = 'display'
-    res.render('allbeers', {allItems: res.locals.allbeers, category: 'Beers'})
+    res.render('allbeers', { allItems: res.locals.allbeers, category: 'Beers' })
   })
 
 // CREATE A BEER
 router.route('/create')
-  .get(function (req,res,next){
+  .get ((req, res, next) => {
     res.render('creators/createbeer')
   })
-  .post(createBeer, function (req,res){
+  .post(createBeer, (req, res) => {
     res.redirect('/beer')
   })
 
-// EDIT ONE BEER 
+// EDIT ONE BEER
 router.route('/edit/:beer_id')
-  .get(editBeer, function (req,res){
+  .get(editBeer, (req, res) => {
     res.render('updateItem')
   })
-  .put(updateBeer, function (req, res){
+  .put(updateBeer, (req, res) => {
     res.redirect('/beer')
   })
-  .delete(deleteBeer, function (req,res){
+  .delete(deleteBeer, (req, res) => {
     res.redirect('/beer')
   })
 

@@ -42,6 +42,17 @@ module.exports = {
       'error',
       'never'
     ],
+    'keyword-spacing': ['warn', {
+      'before': true,
+      'after': true
+    }],
+    'object-curly-spacing': ['warn', 'always'],
+    'space-before-function-paren': ['error', {
+      'anonymous': 'always',
+      'named': 'always',
+      'asyncArrow': 'always'
+    }],
+    'space-before-blocks': ['warn'],
     'arrow-parens': 0,
     'comma-dangle': 0,
     'consistent-return': 0,
@@ -77,6 +88,6 @@ module.exports = {
       'ignoreReadBeforeAssign': false
     }],
     'radix': 0,
-    'space-before-function-paren': ['error', 'always'],
+    // 'space-before-function-paren': ['error', 'always'],
   }
 }

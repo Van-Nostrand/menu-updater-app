@@ -1,52 +1,77 @@
-const db = require('../models')
+const { Beer } = require('../models')
+const { ITEM_TYPES } = require('../util/constants')
 
 // /beers GET
-exports.getAllBeers = async function (req, res, next){
-  try{
-    res.locals.allbeers = await db.Beer.find()
-    if(!res.locals.created) res.locals.created = null
+exports.getAllBeers = async (_req, res, next) => {
+  try {
+    res.locals.allbeers = await Beer.findAll()
+    if (!res.locals.created) {
+      res.locals.created = null
+    }
     next()
-  }catch(err){
+  } catch (err) {
     return next(err)
   }
 }
 
 // /beers/create POST
-exports.createBeer = async function (req,res,next){
-  try{
-    await db.Beer.create({...req.body, itemType: 'beer'})
+exports.createBeer = async (req, res, next) => {
+  try {
+    if (!(
+      'name' in req.body &&
+      'pour1' in req.body &&
+      'pour1price' in req.body
+    )) {
+      throw new Error('missing required properties from request body', { cause: req.body })
+    }
+    res.locals.beer = await Beer.create({
+      ...req.body,
+      itemType: ITEM_TYPES.BEER
+    })
     next()
-  } catch(err){
+  } catch (err) {
     return next(err)
   }
 }
 
 // /edit/:beer_id?_method=PUT
-exports.updateBeer = async function (req, res, next){
-  try{
-    res.locals.updatedBeer = await db.Beer.findOneAndUpdate({_id: req.params.beer_id}, req.body)
+exports.updateBeer = async (req, res, next) => {
+  try {
+    const beerToUpdate = await Beer.findOne({ where: { id: req.params.beer_id } })
+    if (beerToUpdate) {
+      Object.keys(req.body).forEach((column) => {
+        if (column !== 'id') {
+          console.log('updateBeer, updating column:', column, ' with value:', req.body[column])
+          beerToUpdate[column] = req.body[column]
+        }
+      })
+      res.locals.updatedBeer = beerToUpdate
+      await beerToUpdate.save()
+    } else {
+      throw new Error('could not find beer', { cause: req.params.beer_id })
+    }
     next()
-  } catch(err){
+  } catch (err) {
     return next(err)
   }
 }
 
 // /edit/:beer_id GET
-exports.editBeer = async function (req, res, next){
-  try{
-    res.locals.beer = await db.Beer.findOne({_id: req.params.beer_id})
+exports.editBeer = async (req, res, next) => {
+  try {
+    res.locals.beer = await Beer.findOne({ where: { id: req.params.beer_id } })
     next()
-  } catch(err){
+  } catch (err) {
     return next(err)
   }
 }
 
 // /edit/:beer_id?_method=DELETE
-exports.deleteBeer = async function (req,res,next){
-  try{
-    res.locals.deleted =  await db.Beer.deleteOne({_id: req.params.beer_id})
+exports.deleteBeer = async (req,res,next) => {
+  try {
+    res.locals.deleted = await Beer.destroy({ where: { id: req.params.beer_id } })
     next()
-  } catch(err){
+  } catch (err) {
     return next(err)
   }
 }

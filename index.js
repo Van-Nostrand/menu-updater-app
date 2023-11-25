@@ -20,6 +20,7 @@ const PORT = 8000
 const { loginRequired, ensureCorrectUser } = authModule
 
 const { sequelize } = require('./models')
+
 const testSequelize = async (sql) => {
   try {
     await sql.authenticate()
@@ -31,6 +32,7 @@ const testSequelize = async (sql) => {
   }
 }
 testSequelize(sequelize)
+
 app.use(methodOverride('_method'))
 app.use(cors())
 app.use(bodyParser.json())

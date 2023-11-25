@@ -1,34 +1,34 @@
-<li class="nonalc-item">
+<li class="NonAlc-item">
 
   <% if(mode === "edit"){ %>
 
-    <form class="nonalc-edit-form" action="<%= `/nonalc/edit/${nonalc.id}` %>?_method=PUT" method="POST"></form>
+    <form class="NonAlc-edit-form" action="<%= `/NonAlc/edit/${NonAlc.id}` %>?_method=PUT" method="POST"></form>
       <label for="name">Name</label>
-      <input name="name" type="text" value="<%= nonalc.name %>">
-    
+      <input name="name" type="text" value="<%= NonAlc.name %>">
+
       <label for="notes">Notes</label>
-      <input name="notes" type="text" value="<%= nonalc.notes %>">
+      <input name="notes" type="text" value="<%= NonAlc.notes %>">
 
       <label for="price">price</label>
-      <input name="price" type="text" pattern="^\d*\.?\d*$" value="<%= nonalc.price %>">
+      <input name="price" type="text" pattern="^\d*\.?\d*$" value="<%= NonAlc.price %>">
 
       <button type="submit">update this item</button>
     </form>
 
-    <form class="nonalc-delete-form" action="<%= `/nonalc/edit/${nonalc.id}` %>?_method=DELETE" method="POST">
+    <form class="NonAlc-delete-form" action="<%= `/NonAlc/edit/${NonAlc.id}` %>?_method=DELETE" method="POST">
       <button type="submit">delete</button>
     </form>
 
   <% } else { %>
-    <div class="nonalc-name item-name">
-      <%= nonalc.name %>
-    </div>
-  
-    <div class="nonalc-price item-price">
-      <%= nonalc.price %>
+    <div class="NonAlc-name item-name">
+      <%= NonAlc.name %>
     </div>
 
-    <a href="<%= `/nonalc/edit/${nonalc.id}` %>">edit</a>
+    <div class="NonAlc-price item-price">
+      <%= NonAlc.price %>
+    </div>
+
+    <a href="<%= `/NonAlc/edit/${NonAlc.id}` %>">edit</a>
   <% } %>
-  
+
 </li>

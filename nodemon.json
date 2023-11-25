@@ -16,7 +16,8 @@
     "models",
     "routes",
     "scss",
-    "views"
+    "views",
+    "./index.js"
   ],
   "events": {
     "restart": "sass scss/index.scss:public/index.css"

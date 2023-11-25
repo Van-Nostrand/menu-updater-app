@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
-const db = require('./db')
+const sequelize = require('./sql')
 
-const Food = db.define('Food', {
+const Food = sequelize.define('Food', {
   name: {
     type: DataTypes.STRING,
     maxLength: 100,

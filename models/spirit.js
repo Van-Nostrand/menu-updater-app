@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
-const db = require('./db')
+const sequelize = require('./sql')
 
-const Spirit = db.define('Spirit', {
+const Spirit = sequelize.define('Spirit', {
   brandname: {
     type: DataTypes.STRING,
     allowNull: false,

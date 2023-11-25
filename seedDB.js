@@ -4,7 +4,7 @@ const Food = require('./models/food')
 const Wine = require('./models/wine')
 const Cocktail = require('./models/cocktail')
 const Spirit = require('./models/spirit')
-const Nonalc = require('./models/nonalc')
+const NonAlc = require('./models/NonAlc')
 
 async function seedDB (){
   try{
@@ -54,12 +54,12 @@ async function seedDB (){
       }
     })
 
-    await Nonalc.remove({}, function (err){
+    await NonAlc.remove({}, function (err){
       if(err){
         console.log(err)
       }
       else {
-        console.log('all nonalcs are mixed')
+        console.log('all NonAlcs are mixed')
       }
     })
 
@@ -159,7 +159,7 @@ async function seedDB (){
     })
 
     await NON_ALCOHOLIC.forEach(function (seed){
-      Nonalc.create(seed, function (err, data){
+      NonAlc.create(seed, function (err, data){
         if(err){
           console.log('error creating item')
           console.log(seed)

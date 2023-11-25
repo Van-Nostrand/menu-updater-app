@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
-const db = require('./db')
+const sequelize = require('./sql')
 
-const Beer = db.define('Beer', {
+const Beer = sequelize.define('Beer', {
   name: {
     type: DataTypes.STRING,
     unique: true,

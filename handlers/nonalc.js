@@ -1,9 +1,9 @@
 const db = require('../models')
 
-// /nonalc GET
-exports.getAllNonalcs = async function (req, res, next){
+// /NonAlc GET
+exports.getAllNonAlcs = async function (req, res, next){
   try{
-    res.locals.allNonalcs = await db.Nonalc.find()
+    res.locals.allNonAlcs = await db.NonAlc.find()
     res.locals.created = null
     next()
 
@@ -12,10 +12,10 @@ exports.getAllNonalcs = async function (req, res, next){
   }
 }
 
-// /nonalc/create POST
-exports.createNonalc = async function (req,res,next){
+// /NonAlc/create POST
+exports.createNonAlc = async function (req,res,next){
   try{
-    const nonalc = await db.Nonalc.create({...req.body, itemType: 'nonalc'})
+    const NonAlc = await db.NonAlc.create({...req.body, itemType: 'NonAlc'})
 
     next()
   } catch(err){
@@ -23,10 +23,10 @@ exports.createNonalc = async function (req,res,next){
   }
 }
 
-// /edit/:nonalc_id?_method=PUT
-exports.updateNonalc = async function (req, res, next){
+// /edit/:NonAlc_id?_method=PUT
+exports.updateNonAlc = async function (req, res, next){
   try{
-    res.locals.updatedNonalc = await db.Nonalc.findOneAndUpdate({_id: req.params.nonalc_id}, req.body)
+    res.locals.updatedNonAlc = await db.NonAlc.findOneAndUpdate({_id: req.params.NonAlc_id}, req.body)
     next()
   } catch(err){
     return next(err)
@@ -34,20 +34,20 @@ exports.updateNonalc = async function (req, res, next){
 }
 
 
-exports.editNonalc = async function (req, res, next){
+exports.editNonAlc = async function (req, res, next){
   try{
-    const filter = {_id: req.params.nonalc_id}
-    res.locals.nonalc = await db.Nonalc.findOne(filter)
+    const filter = {_id: req.params.NonAlc_id}
+    res.locals.NonAlc = await db.NonAlc.findOne(filter)
     next()
   } catch(err) {
     return next(err)
   }
 }
 
-// /edit/:nonalc_id?_method=DELETE
-exports.deleteNonalc = async function (req,res,next){
+// /edit/:NonAlc_id?_method=DELETE
+exports.deleteNonAlc = async function (req,res,next){
   try{
-    res.locals.deleted =  await db.Nonalc.deleteOne({_id: req.params.nonalc_id})
+    res.locals.deleted =  await db.NonAlc.deleteOne({_id: req.params.NonAlc_id})
     next()
   } catch(err){
     return next(err)

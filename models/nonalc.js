@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
-const db = require('./db')
+const sequelize = require('./sql')
 
-const NonAlc = db.define('NonAlc', {
+const NonAlc = sequelize.define('NonAlc', {
   name: {
     type: DataTypes.STRING,
     allowNull: false,

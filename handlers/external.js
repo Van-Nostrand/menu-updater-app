@@ -1,5 +1,4 @@
 const db = require("../models");
-const axios = require('axios');
 
 // export to external api
 exports.exportMenuData = async function(req, res, next){

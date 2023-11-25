@@ -1,5 +1,4 @@
 const db = require("../models");
-const axios = require('axios');
 
 // view all food and beer
 exports.getWholeMenu = async function(req, res, next){

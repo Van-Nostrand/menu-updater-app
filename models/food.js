@@ -1,35 +1,32 @@
-const mongoose = require('mongoose')
+const { DataTypes } = require('sequelize')
+const db = require('./db')
 
-const foodSchema = new mongoose.Schema({
+const Food = db.define('Food', {
   name: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
     maxLength: 100,
-    unique: true
+    unique: true,
+    allowNull: false
   },
   notes: {
-    type: String,
-    required: false
+    type: DataTypes.STRING,
+    allowNull: true
   },
   price: {
-    type: String,
-    required: true
+    type: DataTypes.STRING,
+    allowNull: false
   },
   diet: {
-    type: String
+    type: DataTypes.STRING
   },
   itemType: {
-    type: String,
-    required: true
+    type: DataTypes.STRING,
+    allowNull: false
   },
   menuSection: {
-    type: String,
-    required: true
+    type: DataTypes.STRING,
+    allowNull: false
   }
-},
-{
-  timestamps: true
 })
 
-const Food = mongoose.model('Food', foodSchema, 'food')
 module.exports = Food

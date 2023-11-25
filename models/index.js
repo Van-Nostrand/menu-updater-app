@@ -1,29 +1,22 @@
-const mongoose = require('mongoose')
-mongoose.set('debug', true)
-mongoose.Promise = Promise
+const { Sequelize } = require('sequelize')
 
-const MONGODB_CURRENT_IP = '192.168.0.105'
-const MONGODB_CURRENT_PORT = '27017'
-const MONGODB_DB_NAME = 'restaurant'
-const MONGODB_OPTIONS = {
-  // user: 'restauranteditor',
-  // pass: '12345678',
-  dbName: 'restaurant',
-  useNewUrlParser: true,
-  keepAlive: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: './db/menu.sqlite'
+})
+
+
+const testSequelize = async () => {
+  try {
+    await sequelize.authenticate()
+    console.log('connection to sqlite has been established')
+  } catch (err) {
+    console.error('could not authenticate sqlite', err)
+  }
 }
-// const URL = `mongodb://${MONGODB_CURRENT_IP}:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
-// const URL = `mongodb://localhost:${MONGODB_CURRENT_PORT}/${MONGODB_DB_NAME}`;
-const URL = 'mongodb+srv://databaseManager:9Zhn7npViUeCW98@cluster0.pchwe.mongodb.net/restaurant?retryWrites=true&w=majority'
+testSequelize()
 
-mongoose.connect(
-  process.env.MONGODB_URI || URL,
-  // process.env.MONGODB_URI,
-  MONGODB_OPTIONS
-)
-
+module.exports.db = sequelize
 module.exports.Beer = require('./beer')
 module.exports.Food = require('./food')
 module.exports.Wine = require('./wine')

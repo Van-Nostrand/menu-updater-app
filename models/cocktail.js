@@ -1,29 +1,25 @@
-const mongoose = require('mongoose')
+const { DataTypes } = require('sequelize')
+const db = require('./db')
 
-const cocktailSchema = new mongoose.Schema({
+const Cocktail = db.define('Cocktail', {
   name: {
-    type: String,
-    required: true,
-    maxLength: 50,
+    type: DataTypes.STRING,
+    allowNull: false,
     unique: true
   },
   notes: {
-    type: String,
+    type: DataTypes.STRING,
   },
   price: {
-    type: String,
+    type: DataTypes.STRING,
   },
   itemType: {
-    type: String,
-    required: true
+    type: DataTypes.STRING,
+    allowNull: false
   }
 },
 {
   timestamps: true
 })
 
-// mongodb will automatically pluralize the schema to create a collection name
-// the third argument of mongoose.model prevents mongodb from doing this
-// This is so obnoxious, I should have learned SQL
-const Cocktail = mongoose.model('Cocktail', cocktailSchema, 'cocktail')
 module.exports = Cocktail

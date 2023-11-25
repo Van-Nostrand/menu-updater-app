@@ -2,7 +2,7 @@
   "name": "menu-updater-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.js --env production",
     "dev": "nodemon index.js -e js,ejs,scss",
@@ -27,6 +27,7 @@
     "sqlite3": "^5.1.6"
   },
   "devDependencies": {
-    "eslint": "^8.54.0"
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0"
   }
 }

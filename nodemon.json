@@ -1,4 +1,23 @@
 {
+  "verbose": true,
+  "ignore": [
+    "dist",
+    "node_modules",
+    ".git",
+    "**/*.test.js"
+  ],
+  "ext": "js,scss,ejs",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "watch": [
+    "handlers",
+    "middleware",
+    "models",
+    "routes",
+    "scss",
+    "views"
+  ],
   "events": {
     "restart": "sass scss/index.scss:public/index.css"
   }

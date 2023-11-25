@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require("bcrypt");
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -17,36 +17,36 @@ const userSchema = new mongoose.Schema({
     type:Object,
     required: true
   }
-  
+
 },
 {
   timestamps: true
-});
+})
 
-userSchema.pre("save", async function(next){
+userSchema.pre('save', async function (next){
   try{
     // checks to see if this user has modified their password? maybe the signature?
-    if(!this.isModified("password")){
-      return next();
+    if(!this.isModified('password')){
+      return next()
     }
-    let hashedPassword = await bcrypt.hash(this.password, 10);
-    this.password = hashedPassword;
-    return next();
+    const hashedPassword = await bcrypt.hash(this.password, 10)
+    this.password = hashedPassword
+    return next()
 
   } catch(err){
-    return next(err);
+    return next(err)
   }
-});
+})
 
-userSchema.methods.comparePassword = async function(candidatePassword, next){
+userSchema.methods.comparePassword = async function (candidatePassword, next){
   try{
-    let isMatch = await bcrypt.compare(candidatePassword, this.password);
-    return isMatch;
+    const isMatch = await bcrypt.compare(candidatePassword, this.password)
+    return isMatch
   } catch(err){
-    return next(err);
+    return next(err)
   }
 }
 
 
-const User = mongoose.model("User", userSchema, "user");
-module.exports = User;
+const User = mongoose.model('User', userSchema, 'user')
+module.exports = User

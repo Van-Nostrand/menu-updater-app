@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const nonalcSchema = new mongoose.Schema({
   name: {
@@ -12,7 +12,7 @@ const nonalcSchema = new mongoose.Schema({
   },
   price: {
     type: String,
-  }, 
+  },
   itemType: {
     type: String,
     required: true
@@ -20,10 +20,10 @@ const nonalcSchema = new mongoose.Schema({
 },
 {
   timestamps: true
-});
+})
 
 // mongodb will automatically pluralize the schema to create a collection name
 // the third argument of mongoose.model prevents mongodb from doing this
 // This is so obnoxious, I should have learned SQL
-const Nonalc = mongoose.model("Nonalc", nonalcSchema, "nonalc");
-module.exports = Nonalc;
+const Nonalc = mongoose.model('Nonalc', nonalcSchema, 'nonalc')
+module.exports = Nonalc

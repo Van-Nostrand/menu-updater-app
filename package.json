@@ -6,7 +6,8 @@
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.js --env production",
     "dev": "nodemon index.js -e js,ejs,scss",
-    "pm2dev": "pm2-runtime start ecosystem.config.js --env development"
+    "pm2dev": "pm2-runtime start ecosystem.config.js --env development",
+    "lint": "eslint . --fix --no-cache"
   },
   "author": "",
   "license": "ISC",
@@ -24,5 +25,8 @@
     "sass": "^1.38.0",
     "sequelize": "^6.35.1",
     "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0"
   }
 }

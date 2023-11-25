@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const wineSchema = new mongoose.Schema({
   brandname: {
@@ -20,7 +20,7 @@ const wineSchema = new mongoose.Schema({
   },
   eightozprice: {
     type: String,
-  }, 
+  },
   bottleprice: {
     type: String,
   },
@@ -34,10 +34,10 @@ const wineSchema = new mongoose.Schema({
 },
 {
   timestamps: true
-});
+})
 
 // mongodb will automatically pluralize the schema to create a collection name
 // the third argument of mongoose.model prevents mongodb from doing this
 // This is so obnoxious, I should have learned SQL
-const Wine = mongoose.model("Wine", wineSchema, "wine");
-module.exports = Wine;
+const Wine = mongoose.model('Wine', wineSchema, 'wine')
+module.exports = Wine

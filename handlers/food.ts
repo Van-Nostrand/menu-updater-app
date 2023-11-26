@@ -1,9 +1,10 @@
+import { RequestHandler } from 'express'
 import { Food } from '../models'
 import { ITEM_TYPES } from '../util/constants'
 import { updateRowLoop } from './helpers'
 
 // /food GET
-export const getAllFood = async (_req, res, next) => {
+export const getAllFood: RequestHandler = async (_req, res, next) => {
   try {
     res.locals.allfood = await Food.findAll()
     res.locals.created = null
@@ -14,7 +15,7 @@ export const getAllFood = async (_req, res, next) => {
 }
 
 // /food GET pt2
-export const sortAllFood = (_req, res, next) => {
+export const sortAllFood: RequestHandler = (_req, res, next) => {
   res.locals.sides = []
   res.locals.starters = []
   res.locals.smallplates = []
@@ -22,7 +23,7 @@ export const sortAllFood = (_req, res, next) => {
   res.locals.dessert = []
   res.locals.feature = []
 
-  res.locals.allfood.forEach(item => {
+  res.locals.allfood.forEach((item: { menuSection: string }) => {
     if (item.menuSection === 'side') res.locals.sides.push(item)
     else if (item.menuSection === 'feature') res.locals.feature.push(item)
     else if (item.menuSection === 'start') res.locals.starters.push(item)
@@ -35,7 +36,7 @@ export const sortAllFood = (_req, res, next) => {
 }
 
 // /food/create POST
-export const createFood = async (req, _res, next) => {
+export const createFood: RequestHandler = async (req, _res, next) => {
   try {
     const food = await Food.create({ ...req.body, itemType: ITEM_TYPES.FOOD })
 
@@ -46,7 +47,7 @@ export const createFood = async (req, _res, next) => {
 }
 
 // /edit/:food_id?_method=PUT
-export const updateFood = async (req, res, next) => {
+export const updateFood: RequestHandler = async (req, res, next) => {
   try {
     const foodToUpdate = await Food.findOne({ where: { id: req.params.food_id } })
     if (foodToUpdate) {
@@ -63,7 +64,7 @@ export const updateFood = async (req, res, next) => {
 }
 
 
-export const editFood = async (req, res, next) => {
+export const editFood: RequestHandler = async (req, res, next) => {
   try {
     res.locals.food = await Food.findOne({ where: { id: req.params.food_id } })
     next()
@@ -73,7 +74,7 @@ export const editFood = async (req, res, next) => {
 }
 
 // /edit/:food_id?_method=DELETE
-export const deleteFood = async (req, res, next) => {
+export const deleteFood: RequestHandler = async (req, res, next) => {
   try {
     res.locals.deleted =  await Food.destroy({ where: { id: req.params.food_id } })
     next()

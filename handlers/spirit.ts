@@ -1,9 +1,10 @@
+import { RequestHandler} from 'express'
 import { Spirit } from '../models'
 import { ITEM_TYPES } from '../util/constants'
 import { updateRowLoop } from './helpers'
 
 // /spirit GET
-export const getAllSpirits = async (_req, res, next) => {
+export const getAllSpirits: RequestHandler = async (_req, res, next) => {
   try {
     res.locals.allSpirits = await Spirit.findAll()
     res.locals.created = null
@@ -15,9 +16,9 @@ export const getAllSpirits = async (_req, res, next) => {
 }
 
 // /spirit/create POST
-export const createSpirit = async (req, _res, next) => {
+export const createSpirit: RequestHandler = async (req, _res, next) => {
   try {
-    const spirit = await Spirit.create({ ...req.body, itemType: ITEM_TYPES.SPIRITS })
+    await Spirit.create({ ...req.body, itemType: ITEM_TYPES.SPIRIT })
 
     next()
   } catch (err) {
@@ -26,9 +27,9 @@ export const createSpirit = async (req, _res, next) => {
 }
 
 // /edit/:spirit_id?_method=PUT
-export const updateSpirit = async (req, res, next) => {
+export const updateSpirit: RequestHandler = async (req, res, next) => {
   try {
-    const spiritToUpdate = await Spirit.findOneAndUpdate({ where: { id: req.params.spirit_id } })
+    const spiritToUpdate = await Spirit.findOne({ where: { id: req.params.spirit_id } })
     if (spiritToUpdate) {
       updateRowLoop(req.body, spiritToUpdate, 'Spirit')
       res.locals.updatedSpirit = spiritToUpdate
@@ -43,7 +44,7 @@ export const updateSpirit = async (req, res, next) => {
 }
 
 
-export const editSpirit = async (req, res, next) => {
+export const editSpirit: RequestHandler = async (req, res, next) => {
   try {
     res.locals.spirit = await Spirit.findOne({ where: { id: req.params.spirit_id } })
     next()
@@ -53,7 +54,7 @@ export const editSpirit = async (req, res, next) => {
 }
 
 // /edit/:spirit_id?_method=DELETE
-export const deleteSpirit = async (req, res, next) => {
+export const deleteSpirit: RequestHandler = async (req, res, next) => {
   try {
     res.locals.deleted =  await Spirit.destroy({ where: { id: req.params.spirit_id } })
     next()

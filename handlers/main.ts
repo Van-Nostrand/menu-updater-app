@@ -1,7 +1,8 @@
+import { RequestHandler } from 'express'
 import { Beer, Food } from '../models'
 
 // view all food and beer
-export const getWholeMenu = async (req, res, next) => {
+export const getWholeMenu: RequestHandler = async (_req, res, next) => {
   try {
     const allbeer = await Beer.findAll()
     const allfood = await Food.findAll()
@@ -16,7 +17,7 @@ export const getWholeMenu = async (req, res, next) => {
 }
 
 // export to external api
-export const exportMenuData = async (req, res, next) => {
+export const exportMenuData: RequestHandler = async (_req, res, next) => {
   try {
     const allbeer = await Beer.findAll()
     const allfood = await Food.findAll()

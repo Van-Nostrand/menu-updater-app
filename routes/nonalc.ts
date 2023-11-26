@@ -5,7 +5,7 @@ const router = express.Router({ mergeParams: true })
 
 // VIEW ALL NonAlc
 router.route('/')
-  .get(getAllNonAlcs, (req, res, next) => {
+  .get(getAllNonAlcs, (_req, res) => {
 
     res.locals.mode = 'display'
     res.render('allNonAlc', { allItems: res.locals.allNonAlc, category: 'NonAlc' })
@@ -13,22 +13,22 @@ router.route('/')
 
 // CREATE A NonAlc
 router.route('/create')
-  .get((req, res, next) => {
+  .get((_req, res) => {
     res.render('creators/createNonAlc')
   })
-  .post(createNonAlc, (req, res) => {
+  .post(createNonAlc, (_req, res) => {
     res.redirect('/NonAlc')
   })
 
 // EDIT ONE NonAlc
 router.route('/edit/:NonAlc_id')
-  .get(editNonAlc, (req, res) => {
+  .get(editNonAlc, (_req, res) => {
     res.render('updateItem')
   })
-  .put(updateNonAlc, (req, res) => {
+  .put(updateNonAlc, (_req, res) => {
     res.redirect('/NonAlc')
   })
-  .delete(deleteNonAlc, (req, res) => {
+  .delete(deleteNonAlc, (_req, res) => {
     res.redirect('/NonAlc')
   })
 

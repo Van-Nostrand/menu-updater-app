@@ -1,8 +1,9 @@
+import { RequestHandler } from 'express'
 import { Cocktail } from '../models'
 import { updateRowLoop } from './helpers'
 
 // /cocktail GET
-const getAllCocktails = async (req, res, next) => {
+const getAllCocktails: RequestHandler = async (req, res, next) => {
   try {
     res.locals.allCocktails = await Cocktail.findAll()
     res.locals.created = null
@@ -14,10 +15,9 @@ const getAllCocktails = async (req, res, next) => {
 }
 
 // /cocktail/create POST
-const createCocktail = async (req, res, next) => {
+const createCocktail: RequestHandler = async (req, res, next) => {
   try {
-    //@ts-ignore
-    const cocktail = await Cocktail.create({ ...req.body, itemType: 'cocktail' })
+    await Cocktail.create({ ...req.body, itemType: 'cocktail' })
 
     next()
   } catch (err) {
@@ -26,7 +26,7 @@ const createCocktail = async (req, res, next) => {
 }
 
 // /edit/:cocktail_id?_method=PUT
-const updateCocktail = async (req, res, next) => {
+const updateCocktail: RequestHandler = async (req, res, next) => {
   try {
     const cocktailToUpdate = await Cocktail.findOne({ where: { id: req.params.cocktail_id } })
     if (cocktailToUpdate) {
@@ -43,7 +43,7 @@ const updateCocktail = async (req, res, next) => {
 }
 
 
-const editCocktail = async (req, res, next) => {
+const editCocktail: RequestHandler = async (req, res, next) => {
   try {
     res.locals.cocktail = await Cocktail.findOne({ where: { id: req.params.cocktail_id } })
     next()
@@ -53,7 +53,7 @@ const editCocktail = async (req, res, next) => {
 }
 
 // /edit/:cocktail_id?_method=DELETE
-const deleteCocktail = async (req, res, next) => {
+const deleteCocktail: RequestHandler = async (req, res, next) => {
   try {
     res.locals.deleted =  await Cocktail.destroy({ where: { id: req.params.cocktail_id } })
     next()

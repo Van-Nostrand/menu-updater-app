@@ -1,9 +1,10 @@
+import { RequestHandler } from 'express'
 import { Beer } from '../models'
 import { ITEM_TYPES } from '../util/constants'
 import { updateRowLoop } from './helpers'
 
 // /beers GET
-const getAllBeers = async (_req, res, next) => {
+const getAllBeers: RequestHandler = async (_req, res, next) => {
   try {
     res.locals.allbeers = await Beer.findAll()
     if (!res.locals.created) {
@@ -16,7 +17,7 @@ const getAllBeers = async (_req, res, next) => {
 }
 
 // /beers/create POST
-const createBeer = async (req, res, next) => {
+const createBeer: RequestHandler = async (req, res, next) => {
   try {
     if (!(
       'name' in req.body &&
@@ -36,7 +37,7 @@ const createBeer = async (req, res, next) => {
 }
 
 // /edit/:beer_id?_method=PUT
-const updateBeer = async (req, res, next) => {
+const updateBeer: RequestHandler = async (req, res, next) => {
   try {
     const beerToUpdate = await Beer.findOne({ where: { id: req.params.beer_id } })
     if (beerToUpdate) {
@@ -54,7 +55,7 @@ const updateBeer = async (req, res, next) => {
 }
 
 // /edit/:beer_id GET
-const editBeer = async (req, res, next) => {
+const editBeer: RequestHandler = async (req, res, next) => {
   try {
     res.locals.beer = await Beer.findOne({ where: { id: req.params.beer_id } })
     next()
@@ -64,7 +65,7 @@ const editBeer = async (req, res, next) => {
 }
 
 // /edit/:beer_id?_method=DELETE
-const deleteBeer = async (req,res,next) => {
+const deleteBeer: RequestHandler = async (req,res,next) => {
   try {
     res.locals.deleted = await Beer.destroy({ where: { id: req.params.beer_id } })
     next()

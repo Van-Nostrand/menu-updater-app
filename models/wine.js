@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize')
-const db = require('./sql')
+import { DataTypes } from 'sequelize'
+import db from './sql'
 
 const Wine = db.define('Wine', {
   brandname: {
@@ -32,4 +32,4 @@ const Wine = db.define('Wine', {
   }
 })
 
-module.exports = Wine
+export default Wine

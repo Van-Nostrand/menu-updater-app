@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize')
-const sequelize = require('./sql')
+import { DataTypes } from 'sequelize'
+import sequelize from './sql'
 
 const Cocktail = sequelize.define('Cocktail', {
   name: {
@@ -17,9 +17,6 @@ const Cocktail = sequelize.define('Cocktail', {
     type: DataTypes.STRING,
     allowNull: false
   }
-},
-{
-  timestamps: true
 })
 
-module.exports = Cocktail
+export default Cocktail

@@ -1,35 +1,35 @@
-const express = require('express')
-const router = express.Router({mergeParams: true})
+import express from 'express'
+const router = express.Router({ mergeParams: true })
 
-const { getAllCocktails, createCocktail, updateCocktail, editCocktail, deleteCocktail } = require('../handlers/cocktail')
+import { getAllCocktails, createCocktail, updateCocktail, editCocktail, deleteCocktail } from '../handlers/cocktail'
 
 // VIEW ALL COCKTAILS
 router.route('/')
-  .get(getAllCocktails, function (req,res,next){
+  .get(getAllCocktails, (req, res) => {
 
     res.locals.mode = 'display'
-    res.render('allcocktails', {allItems: res.locals.allcocktails, category: 'Cocktail'})
+    res.render('allcocktails', { allItems: res.locals.allcocktails, category: 'Cocktail' })
   })
 
 // CREATE A COCKTAILS
 router.route('/create')
-  .get(function (req,res,next){
+  .get((req, res) => {
     res.render('creators/createcocktail')
   })
-  .post(createCocktail, function (req,res){
+  .post(createCocktail, (req, res) => {
     res.redirect('/cocktail')
   })
 
-// EDIT ONE COCKTAILS 
+// EDIT ONE COCKTAILS
 router.route('/edit/:cocktail_id')
-  .get(editCocktail, function (req,res){
+  .get(editCocktail, (req, res) => {
     res.render('updateItem')
   })
-  .put(updateCocktail, function (req, res){
+  .put(updateCocktail, (req, res) => {
     res.redirect('/cocktail')
   })
-  .delete(deleteCocktail, function (req,res){
+  .delete(deleteCocktail, (req, res) => {
     res.redirect('/cocktail')
   })
 
-module.exports = router
+export default router

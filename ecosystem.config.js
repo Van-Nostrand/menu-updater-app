@@ -1,4 +1,4 @@
-module.exports = {
+export {
   apps : [{
     name: 'index',
     script: './index.js',

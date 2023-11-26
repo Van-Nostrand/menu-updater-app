@@ -1,9 +1,9 @@
-const { Spirit } = require('../models')
-const { ITEM_TYPES } = require('../util/constants')
-const { updateRowLoop } = require('./helpers')
+import { Spirit } from '../models'
+import { ITEM_TYPES } from '../util/constants'
+import { updateRowLoop } from './helpers'
 
 // /spirit GET
-exports.getAllSpirits = async (_req, res, next) => {
+export const getAllSpirits = async (_req, res, next) => {
   try {
     res.locals.allSpirits = await Spirit.findAll()
     res.locals.created = null
@@ -15,7 +15,7 @@ exports.getAllSpirits = async (_req, res, next) => {
 }
 
 // /spirit/create POST
-exports.createSpirit = async (req, _res, next) => {
+export const createSpirit = async (req, _res, next) => {
   try {
     const spirit = await Spirit.create({ ...req.body, itemType: ITEM_TYPES.SPIRITS })
 
@@ -26,7 +26,7 @@ exports.createSpirit = async (req, _res, next) => {
 }
 
 // /edit/:spirit_id?_method=PUT
-exports.updateSpirit = async (req, res, next) => {
+export const updateSpirit = async (req, res, next) => {
   try {
     const spiritToUpdate = await Spirit.findOneAndUpdate({ where: { id: req.params.spirit_id } })
     if (spiritToUpdate) {
@@ -43,7 +43,7 @@ exports.updateSpirit = async (req, res, next) => {
 }
 
 
-exports.editSpirit = async (req, res, next) => {
+export const editSpirit = async (req, res, next) => {
   try {
     res.locals.spirit = await Spirit.findOne({ where: { id: req.params.spirit_id } })
     next()
@@ -53,7 +53,7 @@ exports.editSpirit = async (req, res, next) => {
 }
 
 // /edit/:spirit_id?_method=DELETE
-exports.deleteSpirit = async (req, res, next) => {
+export const deleteSpirit = async (req, res, next) => {
   try {
     res.locals.deleted =  await Spirit.destroy({ where: { id: req.params.spirit_id } })
     next()

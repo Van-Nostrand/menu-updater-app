@@ -1,9 +1,9 @@
-const { Beer } = require('../models')
-const { ITEM_TYPES } = require('../util/constants')
-const { updateRowLoop } = require('./helpers')
+import { Beer } from '../models'
+import { ITEM_TYPES } from '../util/constants'
+import { updateRowLoop } from './helpers'
 
 // /beers GET
-exports.getAllBeers = async (_req, res, next) => {
+const getAllBeers = async (_req, res, next) => {
   try {
     res.locals.allbeers = await Beer.findAll()
     if (!res.locals.created) {
@@ -16,7 +16,7 @@ exports.getAllBeers = async (_req, res, next) => {
 }
 
 // /beers/create POST
-exports.createBeer = async (req, res, next) => {
+const createBeer = async (req, res, next) => {
   try {
     if (!(
       'name' in req.body &&
@@ -36,7 +36,7 @@ exports.createBeer = async (req, res, next) => {
 }
 
 // /edit/:beer_id?_method=PUT
-exports.updateBeer = async (req, res, next) => {
+const updateBeer = async (req, res, next) => {
   try {
     const beerToUpdate = await Beer.findOne({ where: { id: req.params.beer_id } })
     if (beerToUpdate) {
@@ -54,7 +54,7 @@ exports.updateBeer = async (req, res, next) => {
 }
 
 // /edit/:beer_id GET
-exports.editBeer = async (req, res, next) => {
+const editBeer = async (req, res, next) => {
   try {
     res.locals.beer = await Beer.findOne({ where: { id: req.params.beer_id } })
     next()
@@ -64,11 +64,19 @@ exports.editBeer = async (req, res, next) => {
 }
 
 // /edit/:beer_id?_method=DELETE
-exports.deleteBeer = async (req,res,next) => {
+const deleteBeer = async (req,res,next) => {
   try {
     res.locals.deleted = await Beer.destroy({ where: { id: req.params.beer_id } })
     next()
   } catch (err) {
     return next(err)
   }
+}
+
+export {
+  getAllBeers,
+  createBeer,
+  updateBeer,
+  editBeer,
+  deleteBeer,
 }

@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize')
-const sequelize = require('./sql')
+import { DataTypes } from 'sequelize'
+import sequelize from './sql'
 
 const Food = sequelize.define('Food', {
   name: {
@@ -29,4 +29,4 @@ const Food = sequelize.define('Food', {
   }
 })
 
-module.exports = Food
+export default Food

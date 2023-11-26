@@ -1,7 +1,7 @@
-const express = require('express')
+import express from 'express'
 const router = express.Router({ mergeParams: true })
 
-const { createBeer, getAllBeers, updateBeer, deleteBeer, editBeer } = require('../handlers/beer')
+import { createBeer, getAllBeers, updateBeer, deleteBeer, editBeer } from '../handlers/beer'
 
 // VIEW ALL BEERS
 router.route('/')
@@ -33,4 +33,4 @@ router.route('/edit/:beer_id')
     res.redirect('/beer')
   })
 
-module.exports = router
+export default router

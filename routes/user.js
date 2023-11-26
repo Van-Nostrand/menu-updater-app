@@ -1,14 +1,14 @@
-const express = require('express')
-const router = express.Router({mergeParams: true})
+import express from 'express'
+import { createUser } from '../handlers/user'
 
-const {createUser} = require('../handlers/user')
+const router = express.Router({ mergeParams: true })
 
 router.route('/register')
-  .post(createUser, function (req,res){
+  .post(createUser, (req, res) =>{
     res.send('you\'ve logged in')
   })
 
-// module.exports = (app) => {
+// export default (app) => {
 //   const User = require('./user.model')
 //   const {
 //       generateSalt,
@@ -33,3 +33,5 @@ router.route('/register')
 //       }
 //   });
 // }
+
+export default router

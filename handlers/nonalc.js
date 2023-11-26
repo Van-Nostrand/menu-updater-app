@@ -1,9 +1,9 @@
-const { NonAlc } = require('../models')
-const { ITEM_TYPES } = require('../util/constants')
-const { updateRowLoop } = require('./helpers')
+import { NonAlc } from '../models'
+import { ITEM_TYPES } from '../util/constants'
+import { updateRowLoop } from './helpers'
 
 // /NonAlc GET
-exports.getAllNonAlcs = async (_req, res, next) => {
+export const getAllNonAlcs = async (_req, res, next) => {
   try {
     res.locals.allNonAlcs = await NonAlc.findAll()
     res.locals.created = null
@@ -15,7 +15,7 @@ exports.getAllNonAlcs = async (_req, res, next) => {
 }
 
 // /NonAlc/create POST
-exports.createNonAlc = async (req, res, next) => {
+export const createNonAlc = async (req, res, next) => {
   try {
     const NonAlc = await NonAlc.create({ ...req.body, itemType: ITEM_TYPES.NON_ALC })
 
@@ -26,7 +26,7 @@ exports.createNonAlc = async (req, res, next) => {
 }
 
 // /edit/:NonAlc_id?_method=PUT
-exports.updateNonAlc = async (req, res, next) => {
+export const updateNonAlc = async (req, res, next) => {
   try {
     const nonAlcToUpdate = await NonAlc.findOne({ where: { id: req.params.NonAlc_id } })
     if (nonAlcToUpdate) {
@@ -42,7 +42,7 @@ exports.updateNonAlc = async (req, res, next) => {
 }
 
 
-exports.editNonAlc = async (req, res, next) => {
+export const editNonAlc = async (req, res, next) => {
   try {
     res.locals.NonAlc = await NonAlc.findOne({ where: { id: req.params.NonAlc_id } })
     next()
@@ -52,7 +52,7 @@ exports.editNonAlc = async (req, res, next) => {
 }
 
 // /edit/:NonAlc_id?_method=DELETE
-exports.deleteNonAlc = async (req,res,next) => {
+export const deleteNonAlc = async (req,res,next) => {
   try {
     res.locals.deleted =  await NonAlc.destroy({ where: { id: req.params.NonAlc_id } })
     next()

@@ -1,6 +1,6 @@
-const { User } = require('../models')
+import { User } from '../models'
 
-exports.createUser = async (req, res) => {
+export const createUser = async (req, res) => {
   try {
     const user = await User.create({
       name: req.body.name,
@@ -20,7 +20,7 @@ exports.createUser = async (req, res) => {
   }
 }
 
-// module.exports = (app) => {
+// export default (app) => {
 //   const User = require('./user.model')
 //   const {
 //       generateSalt,

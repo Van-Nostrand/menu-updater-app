@@ -1,11 +1,12 @@
-const jwt = require('jsonwebtoken')
+import { RequestHandler } from 'express'
+import jwt from 'jsonwebtoken'
 
 // make sure the user is logged in
-exports.loginRequired = function (req, res, next) {
+export const loginRequired: RequestHandler = (req, _res, next) => {
   console.log('login required')
   try {
     const token = req.headers.authorization.split(' ')[1]
-    jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
+    jwt.verify(token, process.env.SECRET_KEY, (_err: Error | undefined, decoded: Record<string, unknown>) => {
       if (decoded) {
         next()
       } else {
@@ -17,11 +18,11 @@ exports.loginRequired = function (req, res, next) {
   }
 }
 
-exports.ensureCorrectUser = function (req, res, next) {
+export const ensureCorrectUser: RequestHandler = (req, res, next) => {
   console.log('ensureCorrectUser')
   try {
     const token = req.headers.authorization.split(' ')[1]
-    jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
+    jwt.verify(token, process.env.SECRET_KEY, (_err: Error | undefined, decoded: { id: string }) => {
       if (decoded && decoded.id === req.params.id) {
         return next()
       }

@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize')
-const sequelize = require('./sql')
+import { DataTypes } from 'sequelize'
+import sequelize from './sql'
 
 const Beer = sequelize.define('Beer', {
   name: {
@@ -41,4 +41,4 @@ const Beer = sequelize.define('Beer', {
   }
 })
 
-module.exports = Beer
+export default Beer

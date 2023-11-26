@@ -1,7 +1,7 @@
-const { User } = require('../models')
-const jwt = require('jsonwebtoken')
+import { User } from "../models";
+import jwt from "jsonwebtoken";
 
-exports.getAllUsers = async (req, res, next) => {
+const getAllUsers = async (req, res, next) => {
   try {
     const allusers = await User.findAll()
     return next({
@@ -17,7 +17,7 @@ exports.getAllUsers = async (req, res, next) => {
   }
 }
 
-exports.signin = async (req, res, next) => {
+const signin = async (req, res, next) => {
   try {
     const user = await User.findOne({ where: {
       // change to username? no
@@ -54,7 +54,7 @@ exports.signin = async (req, res, next) => {
   }
 }
 
-exports.signup = async function (req, res, next) {
+const signup = async (req, res, next) => {
   try {
     //create a user
     const user = await User.create(req.body)
@@ -84,7 +84,8 @@ exports.signup = async function (req, res, next) {
 }
 
 //the user is already signed in. We just need to verify that and then we can update some things
-exports.updateUser = async (req, res, next) => {
+const updateUser = async (req, res, next) => {
+  // todo: fix this
   try {
     const user = await User.findOne({ where: {
       email: req.body.email
@@ -101,3 +102,5 @@ exports.updateUser = async (req, res, next) => {
     })
   }
 }
+
+export { updateUser, signup, signin, getAllUsers }

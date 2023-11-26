@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router({mergeParams: true})
+import express from 'express'
+const router = express.Router({ mergeParams: true })
 
-const { exportMenuData } = require('../handlers/external')
+import { exportMenuData } from '../handlers/external'
 
 // /api/
-router.get('/', exportMenuData, function (req, res, next){
+router.get('/', exportMenuData, (req, res, next) =>{
   return res.status(200).json(res.locals.wholeMenu)
 })
 
-module.exports = router
+export default router

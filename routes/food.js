@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router({mergeParams: true})
+import express from 'express'
+const router = express.Router({ mergeParams: true })
 
-const { createFood, getAllFood, updateFood, deleteFood, editFood, sortAllFood } = require('../handlers/food')
+import { createFood, getAllFood, updateFood, deleteFood, editFood, sortAllFood } from '../handlers/food'
 
 // VIEW ALL FOOD
 router.route('/')
-  .get(getAllFood, sortAllFood, function (req,res,next){
+  .get(getAllFood, sortAllFood, (req, res, next) =>{
     res.locals.mode = 'display'
 
     res.render('allfood')
@@ -13,32 +13,32 @@ router.route('/')
 
 // CREATE FOOD
 router.route('/create')
-  .get(function (req,res){
+  .get((req, res) =>{
     res.render('creators/createfood')
   })
-  .post(createFood, function (req,res){
+  .post(createFood, (req, res) =>{
     res.redirect('/food')
   })
 
 // EDIT ALL FOOD - depreciated
 router.route('/edit')
-  .get(getAllFood, function (req,res){
+  .get(getAllFood, (req, res) =>{
     res.locals.mode = 'edit'
-    res.render('allfood', { category: 'Food'})
+    res.render('allfood', { category: 'Food' })
   })
 
 
 // EDIT ONE FOOD
 router.route('/edit/:food_id')
-  .get(editFood, function (req,res){
+  .get(editFood, (req, res) =>{
     res.render('updateItem')
   })
-  .put(updateFood, function (req, res){
+  .put(updateFood, (req, res) =>{
     res.redirect('/food')
   })
-  .delete(deleteFood, function (req,res){
+  .delete(deleteFood, (req, res) =>{
     res.redirect('/food')
   })
 
 
-module.exports = router
+export default router

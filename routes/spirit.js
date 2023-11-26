@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router({ mergeParams: true })
+import express from 'express'
+import { getAllSpirits, createSpirit, updateSpirit, editSpirit, deleteSpirit } from '../handlers/spirit'
 
-const { getAllSpirits, createSpirit, updateSpirit, editSpirit, deleteSpirit } = require('../handlers/spirit')
+const router = express.Router({ mergeParams: true })
 
 // VIEW ALL SPIRITS
 router.route('/')
-  .get(getAllSpirits, function (req,res,next) {
+  .get(getAllSpirits, (req, res, next) => {
 
     res.locals.mode = 'display'
     res.render('allspirits', { allItems: res.locals.allspirits, category: 'Spirit' })
@@ -13,23 +13,23 @@ router.route('/')
 
 // CREATE A SPIRITS
 router.route('/create')
-  .get(function (req,res,next) {
+  .get((req, res, next) => {
     res.render('creators/createspirit')
   })
-  .post(createSpirit, function (req,res) {
+  .post(createSpirit, (req, res) => {
     res.redirect('/spirit')
   })
 
 // EDIT ONE SPIRITS
 router.route('/edit/:spirit_id')
-  .get(editSpirit, function (req,res) {
+  .get(editSpirit, (req, res) => {
     res.render('updateItem')
   })
-  .put(updateSpirit, function (req, res) {
+  .put(updateSpirit, (req, res) => {
     res.redirect('/spirit')
   })
-  .delete(deleteSpirit, function (req,res) {
+  .delete(deleteSpirit, (req, res) => {
     res.redirect('/spirit')
   })
 
-module.exports = router
+export default router

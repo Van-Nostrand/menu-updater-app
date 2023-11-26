@@ -1,4 +1,4 @@
-const updateRowLoop = (body, row, name) => {
+export const updateRowLoop = (body, row, name) => {
   Object.keys(body).forEach((column) => {
     if (column !== 'id') {
       console.log(`update${name}, updating column:`, column, 'with value:', body[column])
@@ -6,5 +6,3 @@ const updateRowLoop = (body, row, name) => {
     }
   })
 }
-
-module.exports = { updateRowLoop }

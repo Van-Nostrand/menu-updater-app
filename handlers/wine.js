@@ -1,9 +1,9 @@
-const { Wine } = require('../models')
-const { ITEM_TYPES } = require('../util/constants')
-const { updateRowLoop } = require('./helpers')
+import { Wine } from '../models'
+import { ITEM_TYPES } from '../util/constants'
+import { updateRowLoop } from './helpers'
 
 // /wine GET
-exports.getAllWine = async (req, res, next) => {
+export const getAllWine = async (req, res, next) => {
   try {
     res.locals.allwine = await Wine.findAll()
     next()
@@ -13,7 +13,7 @@ exports.getAllWine = async (req, res, next) => {
 }
 
 // /wine/create POST
-exports.createWine = async (req, res, next) => {
+export const createWine = async (req, res, next) => {
   try {
     await Wine.create({ ...req.body, itemType: ITEM_TYPES.WINE })
     next()
@@ -23,7 +23,7 @@ exports.createWine = async (req, res, next) => {
 }
 
 // /edit/:wine_id?_method=PUT
-exports.updateWine = async (req, res, next) => {
+export const updateWine = async (req, res, next) => {
   try {
     const wineToUpdate = await Wine.findOne({ where: { id: req.params.wine_id } })
     if (wineToUpdate) {
@@ -40,7 +40,7 @@ exports.updateWine = async (req, res, next) => {
 }
 
 // /edit/:wine_id GET
-exports.editWine = async (req, res, next) => {
+export const editWine = async (req, res, next) => {
   try {
     res.locals.wine = await Wine.findOne({ where: { id: req.params.wine_id } })
     next()
@@ -50,7 +50,7 @@ exports.editWine = async (req, res, next) => {
 }
 
 // /edit/:wine_id?_method=DELETE
-exports.deleteWine = async (req, res, next) => {
+export const deleteWine = async (req, res, next) => {
   try {
     res.locals.deleted =  await Wine.destroy({ where: { id: req.params.wine_id } })
     next()

@@ -1,9 +1,9 @@
-const { Food } = require('../models')
-const { ITEM_TYPES } = require('../util/constants')
-const { updateRowLoop } = require('./helpers')
+import { Food } from '../models'
+import { ITEM_TYPES } from '../util/constants'
+import { updateRowLoop } from './helpers'
 
 // /food GET
-exports.getAllFood = async (_req, res, next) => {
+export const getAllFood = async (_req, res, next) => {
   try {
     res.locals.allfood = await Food.findAll()
     res.locals.created = null
@@ -14,7 +14,7 @@ exports.getAllFood = async (_req, res, next) => {
 }
 
 // /food GET pt2
-exports.sortAllFood = (_req, res, next) => {
+export const sortAllFood = (_req, res, next) => {
   res.locals.sides = []
   res.locals.starters = []
   res.locals.smallplates = []
@@ -35,7 +35,7 @@ exports.sortAllFood = (_req, res, next) => {
 }
 
 // /food/create POST
-exports.createFood = async (req, _res, next) => {
+export const createFood = async (req, _res, next) => {
   try {
     const food = await Food.create({ ...req.body, itemType: ITEM_TYPES.FOOD })
 
@@ -46,7 +46,7 @@ exports.createFood = async (req, _res, next) => {
 }
 
 // /edit/:food_id?_method=PUT
-exports.updateFood = async (req, res, next) => {
+export const updateFood = async (req, res, next) => {
   try {
     const foodToUpdate = await Food.findOne({ where: { id: req.params.food_id } })
     if (foodToUpdate) {
@@ -63,7 +63,7 @@ exports.updateFood = async (req, res, next) => {
 }
 
 
-exports.editFood = async (req, res, next) => {
+export const editFood = async (req, res, next) => {
   try {
     res.locals.food = await Food.findOne({ where: { id: req.params.food_id } })
     next()
@@ -73,7 +73,7 @@ exports.editFood = async (req, res, next) => {
 }
 
 // /edit/:food_id?_method=DELETE
-exports.deleteFood = async (req, res, next) => {
+export const deleteFood = async (req, res, next) => {
   try {
     res.locals.deleted =  await Food.destroy({ where: { id: req.params.food_id } })
     next()

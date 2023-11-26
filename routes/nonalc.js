@@ -1,35 +1,35 @@
-const express = require('express')
-const router = express.Router({mergeParams: true})
+import express from 'express'
+const router = express.Router({ mergeParams: true })
 
-const { getAllNonAlcs, createNonAlc, updateNonAlc, editNonAlc, deleteNonAlc } = require('../handlers/NonAlc')
+import { getAllNonAlcs, createNonAlc, updateNonAlc, editNonAlc, deleteNonAlc } from '../handlers/NonAlc'
 
 // VIEW ALL NonAlc
 router.route('/')
-  .get(getAllNonAlcs, function (req,res,next){
+  .get(getAllNonAlcs, (req, res, next) =>{
 
     res.locals.mode = 'display'
-    res.render('allNonAlc', {allItems: res.locals.allNonAlc, category: 'NonAlc'})
+    res.render('allNonAlc', { allItems: res.locals.allNonAlc, category: 'NonAlc' })
   })
 
 // CREATE A NonAlc
 router.route('/create')
-  .get(function (req,res,next){
+  .get((req, res, next) =>{
     res.render('creators/createNonAlc')
   })
-  .post(createNonAlc, function (req,res){
+  .post(createNonAlc, (req, res) =>{
     res.redirect('/NonAlc')
   })
 
 // EDIT ONE NonAlc
 router.route('/edit/:NonAlc_id')
-  .get(editNonAlc, function (req,res){
+  .get(editNonAlc, (req, res) =>{
     res.render('updateItem')
   })
-  .put(updateNonAlc, function (req, res){
+  .put(updateNonAlc, (req, res) =>{
     res.redirect('/NonAlc')
   })
-  .delete(deleteNonAlc, function (req,res){
+  .delete(deleteNonAlc, (req, res) =>{
     res.redirect('/NonAlc')
   })
 
-module.exports = router
+export default router

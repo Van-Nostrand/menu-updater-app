@@ -5,7 +5,7 @@ const { createWine, getAllWine, updateWine, deleteWine, editWine } = require('..
 
 // VIEW ALL WINE
 router.route('/')
-  .get(getAllWine, function (req,res,next){
+  .get(getAllWine, (req, res, next) =>{
 
     res.locals.mode = 'display'
     res.render('allwine', {allItems: res.locals.allwine, category: 'Wine'})
@@ -13,23 +13,23 @@ router.route('/')
 
 // CREATE A WINE
 router.route('/create')
-  .get(function (req,res,next){
+  .get((req, res, next) =>{
     res.render('creators/createwine')
   })
-  .post(createWine, function (req,res){
+  .post(createWine, (req, res) =>{
     res.redirect('/wine')
   })
 
-// EDIT ONE WINE 
+// EDIT ONE WINE
 router.route('/edit/:wine_id')
-  .get(editWine, function (req,res){
+  .get(editWine, (req, res) =>{
     res.render('updateItem')
   })
-  .put(updateWine, function (req, res){
+  .put(updateWine, (req, res) =>{
     res.redirect('/wine')
   })
-  .delete(deleteWine, function (req,res){
+  .delete(deleteWine, (req, res) =>{
     res.redirect('/wine')
   })
 
-module.exports = router
+export default router

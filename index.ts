@@ -1,12 +1,11 @@
 import 'dotenv/config'
 import express from 'express'
-
 import bodyParser from 'body-parser'
 import path from 'path'
 import cors from 'cors'
 import methodOverride from 'method-override'
 import authRoutes from './routes/auth'
-import authModule from './middleware/auth'
+import * as authModule from './middleware/auth'
 import beerRoutes from './routes/beer'
 import foodRoutes from './routes/food'
 import mainRoutes from './routes/main'
@@ -14,6 +13,7 @@ import cocktailRoutes from './routes/cocktail'
 import spiritRoutes from './routes/spirit'
 import NonAlcRoutes from './routes/NonAlc'
 import externalRoutes from './routes/external'
+import { sequelize } from './models'
 
 const app = express()
 
@@ -22,7 +22,6 @@ const PORT = 8000
 // unused?
 const { loginRequired, ensureCorrectUser } = authModule
 
-const { sequelize } = require('./models')
 
 const testSequelize = async (sql) => {
   try {

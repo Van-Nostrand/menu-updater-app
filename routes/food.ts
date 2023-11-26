@@ -5,7 +5,7 @@ import { createFood, getAllFood, updateFood, deleteFood, editFood, sortAllFood }
 
 // VIEW ALL FOOD
 router.route('/')
-  .get(getAllFood, sortAllFood, (req, res, next) =>{
+  .get(getAllFood, sortAllFood, (req, res, next) => {
     res.locals.mode = 'display'
 
     res.render('allfood')
@@ -13,16 +13,16 @@ router.route('/')
 
 // CREATE FOOD
 router.route('/create')
-  .get((req, res) =>{
+  .get((req, res) => {
     res.render('creators/createfood')
   })
-  .post(createFood, (req, res) =>{
+  .post(createFood, (req, res) => {
     res.redirect('/food')
   })
 
 // EDIT ALL FOOD - depreciated
 router.route('/edit')
-  .get(getAllFood, (req, res) =>{
+  .get(getAllFood, (req, res) => {
     res.locals.mode = 'edit'
     res.render('allfood', { category: 'Food' })
   })
@@ -30,13 +30,13 @@ router.route('/edit')
 
 // EDIT ONE FOOD
 router.route('/edit/:food_id')
-  .get(editFood, (req, res) =>{
+  .get(editFood, (req, res) => {
     res.render('updateItem')
   })
-  .put(updateFood, (req, res) =>{
+  .put(updateFood, (req, res) => {
     res.redirect('/food')
   })
-  .delete(deleteFood, (req, res) =>{
+  .delete(deleteFood, (req, res) => {
     res.redirect('/food')
   })
 

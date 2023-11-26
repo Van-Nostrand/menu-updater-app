@@ -1,11 +1,11 @@
 import 'dotenv/config'
-import express from 'express'
+import express, { ErrorRequestHandler, RequestHandler } from 'express'
 import bodyParser from 'body-parser'
 import path from 'path'
 import cors from 'cors'
 import methodOverride from 'method-override'
 import authRoutes from './routes/auth'
-import * as authModule from './middleware/auth'
+// import * as authModule from './middleware/auth'
 import beerRoutes from './routes/beer'
 import foodRoutes from './routes/food'
 import mainRoutes from './routes/main'
@@ -14,16 +14,17 @@ import spiritRoutes from './routes/spirit'
 import NonAlcRoutes from './routes/NonAlc'
 import externalRoutes from './routes/external'
 import { sequelize } from './models'
+import { Sequelize } from 'sequelize'
 
 const app = express()
 
 const PORT = 8000
 
 // unused?
-const { loginRequired, ensureCorrectUser } = authModule
+// const { loginRequired, ensureCorrectUser } = authModule
 
 
-const testSequelize = async (sql) => {
+const testSequelize = async (sql: Sequelize) => {
   try {
     await sql.authenticate()
     console.log('connection to sqlite has been established')
@@ -44,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 ////////////////////////////
 // ERROR HANDLING
-app.use((err, req, res, next) => {
+app.use(<ErrorRequestHandler>((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
@@ -52,7 +53,7 @@ app.use((err, req, res, next) => {
   // render the error page
   res.status(err.status || 500)
   // console.log(err);
-})
+}))
 
 ///////////////////////////////
 // DEFINE ROUTES

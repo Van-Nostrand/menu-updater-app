@@ -28,8 +28,7 @@ const signin: RequestHandler = async (req, res, next) => {
     //@ts-ignore
     const { id, username, profileImageUrl } = user
     console.dir('user is', user)
-    // todo: re-implement
-    //@ts-ignore
+
     const isMatch = await user.comparePassword(req.body.password)
 
     if (isMatch) {
@@ -62,7 +61,7 @@ const signup: RequestHandler = async (req, res, next) => {
   try {
     //create a user
     const user = await User.create(req.body)
-    //@ts-ignore
+
     const { id, username, profileImageUrl } = user
     //create a token (signing a token)
     const token = jwt.sign({
@@ -95,9 +94,9 @@ const updateUser: RequestHandler = async (req, res, next) => {
     const user = await User.findOne({ where: {
       email: req.body.email
     } })
-    //@ts-ignore
+
     const { email, profileImageUrl, username, id } = user
-    // let isMatch = await user.comparePassword(req.body.password);
+    let isMatch = await user.comparePassword(req.body.password);
     const updatesToMake = req.body.updates
     return res.status(200).json({})
 

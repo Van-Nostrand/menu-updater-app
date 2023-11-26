@@ -1,8 +1,28 @@
-import { DataTypes } from 'sequelize'
+import { DataTypes, Model } from 'sequelize'
 import sequelize from './sql'
 import bcrypt from 'bcrypt'
 
-const User = sequelize.define('User', {
+// type TUserAttributes = {
+//   username: string
+//   email: string
+//   password: string
+//   profileImageUrl: string
+// }
+
+class User extends Model {
+  username: string
+  email: string
+  password: string
+  profileImageUrl: string
+
+  id: string
+
+  async comparePassword (candidate: string) {
+    return bcrypt.compare(candidate, this.password)
+  }
+}
+
+User.init({
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -13,6 +33,10 @@ const User = sequelize.define('User', {
     allowNull: false,
     unique: true
   },
+  profileImageUrl: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -21,15 +45,9 @@ const User = sequelize.define('User', {
       this.setDataValue('password', hash)
     }
   }
+}, {
+  sequelize,
+  modelName: 'User'
 })
-
-// userSchema.methods.comparePassword = async function (candidatePassword, next){
-//   try{
-//     const isMatch = await bcrypt.compare(candidatePassword, this.password)
-//     return isMatch
-//   } catch(err){
-//     return next(err)
-//   }
-// }
 
 export default User

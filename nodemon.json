@@ -4,7 +4,7 @@
     "dist",
     "node_modules",
     ".git",
-    "**/*.test.js"
+    "**/*.test.ts"
   ],
   "ext": "js,ts,scss,ejs",
   "env": {
@@ -17,7 +17,7 @@
     "routes",
     "scss",
     "views",
-    "./index.js"
+    "./index.ts"
   ],
   "execMap": {
     "ts": "ts-node"

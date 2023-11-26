@@ -1,35 +1,35 @@
-const express = require('express');
-const router = express.Router({mergeParams: true});
+const express = require('express')
+const router = express.Router({mergeParams: true})
 
-const { getAllNonalcs, createNonalc, updateNonalc, editNonalc, deleteNonalc } = require("../handlers/nonalc");
+const { getAllNonAlcs, createNonAlc, updateNonAlc, editNonAlc, deleteNonAlc } = require('../handlers/NonAlc')
 
-// VIEW ALL NONALC
-router.route("/")
-  .get(getAllNonalcs, function(req,res,next){
-  
-    res.locals.mode = "display";
-    res.render("allnonalc", {allItems: res.locals.allnonalc, category: "Nonalc"})
-  });
+// VIEW ALL NonAlc
+router.route('/')
+  .get(getAllNonAlcs, function (req,res,next){
 
-// CREATE A NONALC
-router.route("/create")
-  .get(function(req,res,next){
-    res.render("creators/createnonalc")
+    res.locals.mode = 'display'
+    res.render('allNonAlc', {allItems: res.locals.allNonAlc, category: 'NonAlc'})
   })
-  .post(createNonalc, function(req,res){
-    res.redirect("/nonalc");
-  });
 
-// EDIT ONE NONALC 
-router.route("/edit/:nonalc_id")
-  .get(editNonalc, function(req,res){ 
-    res.render("updateItem")
+// CREATE A NonAlc
+router.route('/create')
+  .get(function (req,res,next){
+    res.render('creators/createNonAlc')
   })
-  .put(updateNonalc, function(req, res){
-    res.redirect("/nonalc");
+  .post(createNonAlc, function (req,res){
+    res.redirect('/NonAlc')
   })
-  .delete(deleteNonalc, function(req,res){
-    res.redirect("/nonalc");
-  });
 
-module.exports = router;
+// EDIT ONE NonAlc
+router.route('/edit/:NonAlc_id')
+  .get(editNonAlc, function (req,res){
+    res.render('updateItem')
+  })
+  .put(updateNonAlc, function (req, res){
+    res.redirect('/NonAlc')
+  })
+  .delete(deleteNonAlc, function (req,res){
+    res.redirect('/NonAlc')
+  })
+
+module.exports = router

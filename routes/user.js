@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router({mergeParams: true});
+const express = require('express')
+const router = express.Router({mergeParams: true})
 
-const {createUser} = require("../handlers/user");
+const {createUser} = require('../handlers/user')
 
-router.route("/register")
-  .post(createUser, function(req,res){
-    res.send("you've logged in");
-  });
+router.route('/register')
+  .post(createUser, function (req,res){
+    res.send('you\'ve logged in')
+  })
 
 // module.exports = (app) => {
 //   const User = require('./user.model')

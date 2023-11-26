@@ -1,55 +1,62 @@
-const db = require("../models");
+const { NonAlc } = require('../models')
+const { ITEM_TYPES } = require('../util/constants')
+const { updateRowLoop } = require('./helpers')
 
-// /nonalc GET
-exports.getAllNonalcs = async function(req, res, next){
-  try{
-    res.locals.allNonalcs = await db.Nonalc.find();
-    res.locals.created = null;
-    next();
-    
-  }catch(err){
-    return next(err);
-  }
-}
-
-// /nonalc/create POST
-exports.createNonalc = async function(req,res,next){
-  try{
-    let nonalc = await db.Nonalc.create({...req.body, itemType: "nonalc"});
-
-    next();
-  } catch(err){
-    return next(err);
-  }
-}
-
-// /edit/:nonalc_id?_method=PUT
-exports.updateNonalc = async function(req, res, next){
-  try{
-    res.locals.updatedNonalc = await db.Nonalc.findOneAndUpdate({_id: req.params.nonalc_id}, req.body);
-    next();
-  } catch(err){
-    return next(err);
-  }
-}
-
-
-exports.editNonalc = async function(req, res, next){
-  try{
-    let filter = {_id: req.params.nonalc_id};
-    res.locals.nonalc = await db.Nonalc.findOne(filter);
+// /NonAlc GET
+exports.getAllNonAlcs = async (_req, res, next) => {
+  try {
+    res.locals.allNonAlcs = await NonAlc.findAll()
+    res.locals.created = null
     next()
-  } catch(err) {
-    return next(err);
+
+  } catch (err) {
+    return next(err)
   }
 }
 
-// /edit/:nonalc_id?_method=DELETE
-exports.deleteNonalc = async function(req,res,next){
-  try{
-    res.locals.deleted =  await db.Nonalc.deleteOne({_id: req.params.nonalc_id});
-    next();
-  } catch(err){
-    return next(err);
+// /NonAlc/create POST
+exports.createNonAlc = async (req, res, next) => {
+  try {
+    const NonAlc = await NonAlc.create({ ...req.body, itemType: ITEM_TYPES.NON_ALC })
+
+    next()
+  } catch (err) {
+    return next(err)
+  }
+}
+
+// /edit/:NonAlc_id?_method=PUT
+exports.updateNonAlc = async (req, res, next) => {
+  try {
+    const nonAlcToUpdate = await NonAlc.findOne({ where: { id: req.params.NonAlc_id } })
+    if (nonAlcToUpdate) {
+      updateRowLoop(req.body, nonAlcToUpdate, 'NonAlc')
+    }
+    res.locals.updatedNonAlc = nonAlcToUpdate
+    await nonAlcToUpdate.save()
+
+    next()
+  } catch (err) {
+    return next(err)
+  }
+}
+
+
+exports.editNonAlc = async (req, res, next) => {
+  try {
+    res.locals.NonAlc = await NonAlc.findOne({ where: { id: req.params.NonAlc_id } })
+    next()
+  } catch (err) {
+    return next(err)
+  }
+}
+
+// /edit/:NonAlc_id?_method=DELETE
+exports.deleteNonAlc = async (req,res,next) => {
+  try {
+    res.locals.deleted =  await NonAlc.destroy({ where: { id: req.params.NonAlc_id } })
+    next()
+  } catch (err) {
+    return next(err)
   }
 }

@@ -1,19 +1,22 @@
-require('dotenv').config()
-const express = require('express')
+import 'dotenv/config'
+import express from 'express'
+
+import bodyParser from 'body-parser'
+import path from 'path'
+import cors from 'cors'
+import methodOverride from 'method-override'
+import authRoutes from './routes/auth'
+import authModule from './middleware/auth'
+import beerRoutes from './routes/beer'
+import foodRoutes from './routes/food'
+import mainRoutes from './routes/main'
+import cocktailRoutes from './routes/cocktail'
+import spiritRoutes from './routes/spirit'
+import NonAlcRoutes from './routes/NonAlc'
+import externalRoutes from './routes/external'
+
 const app = express()
-const bodyParser = require('body-parser')
-const path = require('path')
-const cors = require('cors')
-const methodOverride = require('method-override')
-const authRoutes = require('./routes/auth')
-const authModule = require('./middleware/auth')
-const beerRoutes = require('./routes/beer')
-const foodRoutes = require('./routes/food')
-const mainRoutes = require('./routes/main')
-const cocktailRoutes = require('./routes/cocktail')
-const spiritRoutes = require('./routes/spirit')
-const NonAlcRoutes = require('./routes/NonAlc')
-const externalRoutes = require('./routes/external')
+
 const PORT = 8000
 
 // unused?

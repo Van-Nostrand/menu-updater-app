@@ -6,7 +6,7 @@
     ".git",
     "**/*.test.js"
   ],
-  "ext": "js,scss,ejs",
+  "ext": "js,ts,scss,ejs",
   "env": {
     "NODE_ENV": "development"
   },
@@ -19,6 +19,9 @@
     "views",
     "./index.js"
   ],
+  "execMap": {
+    "ts": "ts-node"
+  },
   "events": {
     "restart": "sass scss/index.scss:public/index.css"
   }

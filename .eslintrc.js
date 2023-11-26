@@ -4,17 +4,46 @@ module.exports = {
     'commonjs': true,
     'es2021': true
   },
-  'extends': 'eslint:recommended',
+  'extends': [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
   'globals': {
     '__dirname': true,
     'process': true
   },
-  'overrides': [
-    {
-      'env': {
-        'node': true
+  plugins: [
+    '@typescript-eslint',
+    'import'
+  ],
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts']
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: './'
       },
-      'files': [
+      node: {
+        extensions: ['.js'],
+        paths: [
+          './handlers',
+          './middleware',
+          './models',
+          './routes',
+          './util',
+          './views'
+        ]
+      }
+    }
+  },
+  overrides: [
+    {
+      env: {
+        node: true
+      },
+      files: [
         '.eslintrc.{js,cjs}'
       ],
       'parserOptions': {
@@ -22,8 +51,9 @@ module.exports = {
       }
     }
   ],
-  'parserOptions': {
-    'ecmaVersion': 'latest'
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest'
   },
   'rules': {
     'indent': [

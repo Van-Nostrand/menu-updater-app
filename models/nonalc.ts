@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize')
-const sequelize = require('./sql')
+import { DataTypes } from 'sequelize'
+import sequelize from './sql'
 
 const NonAlc = sequelize.define('NonAlc', {
   name: {
@@ -19,4 +19,4 @@ const NonAlc = sequelize.define('NonAlc', {
   }
 })
 
-module.exports = NonAlc
+export default NonAlc

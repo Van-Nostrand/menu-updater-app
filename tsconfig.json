@@ -19,7 +19,9 @@
     "./.husky/**/*",
     "./uploads/**/*",
     "./views/**/*",
-    "./scss/**/*"
+    "./scss/**/*",
+    "./.prettierrc.js",
+    "./ecosystem.config.js"
   ],
   "include": [
     "./handlers/**/*",

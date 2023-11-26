@@ -4,7 +4,6 @@ import sequelize from './sql'
 const Food = sequelize.define('Food', {
   name: {
     type: DataTypes.STRING,
-    maxLength: 100,
     unique: true,
     allowNull: false
   },

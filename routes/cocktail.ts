@@ -5,7 +5,7 @@ import { getAllCocktails, createCocktail, updateCocktail, editCocktail, deleteCo
 
 // VIEW ALL COCKTAILS
 router.route('/')
-  .get(getAllCocktails, (req, res) => {
+  .get(getAllCocktails, (_req, res) => {
 
     res.locals.mode = 'display'
     res.render('allcocktails', { allItems: res.locals.allcocktails, category: 'Cocktail' })
@@ -13,22 +13,22 @@ router.route('/')
 
 // CREATE A COCKTAILS
 router.route('/create')
-  .get((req, res) => {
+  .get((_req, res) => {
     res.render('creators/createcocktail')
   })
-  .post(createCocktail, (req, res) => {
+  .post(createCocktail, (_req, res) => {
     res.redirect('/cocktail')
   })
 
 // EDIT ONE COCKTAILS
 router.route('/edit/:cocktail_id')
-  .get(editCocktail, (req, res) => {
+  .get(editCocktail, (_req, res) => {
     res.render('updateItem')
   })
-  .put(updateCocktail, (req, res) => {
+  .put(updateCocktail, (_req, res) => {
     res.redirect('/cocktail')
   })
-  .delete(deleteCocktail, (req, res) => {
+  .delete(deleteCocktail, (_req, res) => {
     res.redirect('/cocktail')
   })
 

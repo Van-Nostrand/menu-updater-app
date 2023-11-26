@@ -4,31 +4,32 @@ import { getAllSpirits, createSpirit, updateSpirit, editSpirit, deleteSpirit } f
 const router = express.Router({ mergeParams: true })
 
 // VIEW ALL SPIRITS
-router.route('/')
-  .get(getAllSpirits, (req, res, next) => {
-
+router.route('/').get(
+  getAllSpirits,
+  (_req, res) => {
     res.locals.mode = 'display'
     res.render('allspirits', { allItems: res.locals.allspirits, category: 'Spirit' })
-  })
+  }
+)
 
 // CREATE A SPIRITS
 router.route('/create')
-  .get((req, res, next) => {
+  .get((_req, res) => {
     res.render('creators/createspirit')
   })
-  .post(createSpirit, (req, res) => {
+  .post(createSpirit, (_req, res) => {
     res.redirect('/spirit')
   })
 
 // EDIT ONE SPIRITS
 router.route('/edit/:spirit_id')
-  .get(editSpirit, (req, res) => {
+  .get(editSpirit, (_req, res) => {
     res.render('updateItem')
   })
-  .put(updateSpirit, (req, res) => {
+  .put(updateSpirit, (_req, res) => {
     res.redirect('/spirit')
   })
-  .delete(deleteSpirit, (req, res) => {
+  .delete(deleteSpirit, (_req, res) => {
     res.redirect('/spirit')
   })
 

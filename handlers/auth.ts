@@ -29,6 +29,7 @@ const signin: RequestHandler = async (req, res, next) => {
     const { id, username, profileImageUrl } = user
     console.dir('user is', user)
     // todo: re-implement
+    //@ts-ignore
     const isMatch = await user.comparePassword(req.body.password)
 
     if (isMatch) {

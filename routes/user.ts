@@ -4,7 +4,7 @@ import { createUser } from '../handlers/user'
 const router = express.Router({ mergeParams: true })
 
 router.route('/register')
-  .post(createUser, (req, res) => {
+  .post(createUser, (_req, res) => {
     res.send('you\'ve logged in')
   })
 

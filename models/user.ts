@@ -16,7 +16,7 @@ const User = sequelize.define('User', {
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-    async set (value) {
+    async set (value: string) {
       const hash = await bcrypt.hash(value, 10)
       this.setDataValue('password', hash)
     }

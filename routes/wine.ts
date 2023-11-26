@@ -5,7 +5,7 @@ const router = express.Router({mergeParams: true})
 
 // VIEW ALL WINE
 router.route('/')
-  .get(getAllWine, (req, res, next) => {
+  .get(getAllWine, (_req, res) => {
 
     res.locals.mode = 'display'
     res.render('allwine', {allItems: res.locals.allwine, category: 'Wine'})
@@ -13,22 +13,22 @@ router.route('/')
 
 // CREATE A WINE
 router.route('/create')
-  .get((req, res, next) => {
+  .get((_req, res) => {
     res.render('creators/createwine')
   })
-  .post(createWine, (req, res) => {
+  .post(createWine, (_req, res) => {
     res.redirect('/wine')
   })
 
 // EDIT ONE WINE
 router.route('/edit/:wine_id')
-  .get(editWine, (req, res) => {
+  .get(editWine, (_req, res) => {
     res.render('updateItem')
   })
-  .put(updateWine, (req, res) => {
+  .put(updateWine, (_req, res) => {
     res.redirect('/wine')
   })
-  .delete(deleteWine, (req, res) => {
+  .delete(deleteWine, (_req, res) => {
     res.redirect('/wine')
   })
 

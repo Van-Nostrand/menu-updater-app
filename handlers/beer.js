@@ -1,5 +1,6 @@
 const { Beer } = require('../models')
 const { ITEM_TYPES } = require('../util/constants')
+const { updateRowLoop } = require('./helpers')
 
 // /beers GET
 exports.getAllBeers = async (_req, res, next) => {
@@ -39,12 +40,8 @@ exports.updateBeer = async (req, res, next) => {
   try {
     const beerToUpdate = await Beer.findOne({ where: { id: req.params.beer_id } })
     if (beerToUpdate) {
-      Object.keys(req.body).forEach((column) => {
-        if (column !== 'id') {
-          console.log('updateBeer, updating column:', column, ' with value:', req.body[column])
-          beerToUpdate[column] = req.body[column]
-        }
-      })
+      updateRowLoop(req.body, beerToUpdate, 'Beer')
+
       res.locals.updatedBeer = beerToUpdate
       await beerToUpdate.save()
     } else {

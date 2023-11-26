@@ -1,9 +1,10 @@
-const db = require('../models')
+const { Cocktail } = require('../models')
+const { updateRowLoop } = require('./helpers')
 
 // /cocktail GET
 exports.getAllCocktails = async function (req, res, next) {
   try {
-    res.locals.allCocktails = await db.Cocktail.find()
+    res.locals.allCocktails = await Cocktail.findAll()
     res.locals.created = null
     next()
 
@@ -15,7 +16,7 @@ exports.getAllCocktails = async function (req, res, next) {
 // /cocktail/create POST
 exports.createCocktail = async function (req,res,next) {
   try {
-    const cocktail = await db.Cocktail.create({ ...req.body, itemType: 'cocktail' })
+    const cocktail = await Cocktail.create({ ...req.body, itemType: 'cocktail' })
 
     next()
   } catch (err) {
@@ -26,7 +27,14 @@ exports.createCocktail = async function (req,res,next) {
 // /edit/:cocktail_id?_method=PUT
 exports.updateCocktail = async function (req, res, next) {
   try {
-    res.locals.updatedCocktail = await db.Cocktail.findOneAndUpdate({ _id: req.params.cocktail_id }, req.body)
+    const cocktailToUpdate = await Cocktail.findOne({ where: { id: req.params.cocktail_id } })
+    if (cocktailToUpdate) {
+      updateRowLoop(req.body, cocktailToUpdate, 'Cocktail')
+      res.locals.updatedCocktail = cocktailToUpdate
+      await cocktailToUpdate.save()
+    } else {
+      throw new Error('could not find cocktail', { cause: req.params.cocktail_id })
+    }
     next()
   } catch (err) {
     return next(err)
@@ -36,8 +44,7 @@ exports.updateCocktail = async function (req, res, next) {
 
 exports.editCocktail = async function (req, res, next) {
   try {
-    const filter = { _id: req.params.cocktail_id }
-    res.locals.cocktail = await db.Cocktail.findOne(filter)
+    res.locals.cocktail = await Cocktail.findOne({ where: { id: req.params.cocktail_id } })
     next()
   } catch (err) {
     return next(err)
@@ -47,7 +54,7 @@ exports.editCocktail = async function (req, res, next) {
 // /edit/:cocktail_id?_method=DELETE
 exports.deleteCocktail = async function (req,res,next) {
   try {
-    res.locals.deleted =  await db.Cocktail.deleteOne({ _id: req.params.cocktail_id })
+    res.locals.deleted =  await Cocktail.destroy({ where: { id: req.params.cocktail_id } })
     next()
   } catch (err) {
     return next(err)

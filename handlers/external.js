@@ -1,15 +1,15 @@
-const db = require('../models')
+const { Beer, Food } = require('../models')
 
 // export to external api
-exports.exportMenuData = async function (req, res, next){
+exports.exportMenuData = async (req, res, next) => {
   // console.log("external request!")
-  try{
-    const allbeer = await db.Beer.find()
-    const allfood = await db.Food.find()
+  try {
+    const allbeer = await Beer.findAll()
+    const allfood = await Food.findAll()
     res.locals.wholeMenu = [allbeer, allfood]
 
     next()
-  } catch(err){
+  } catch (err) {
     console.log(err)
   }
 }

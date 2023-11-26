@@ -5,7 +5,7 @@ const { updateRowLoop } = require('./helpers')
 // /food GET
 exports.getAllFood = async (_req, res, next) => {
   try {
-    res.locals.allfood = await Food.find()
+    res.locals.allfood = await Food.findAll()
     res.locals.created = null
     next()
   } catch (err) {

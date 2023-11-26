@@ -36,13 +36,13 @@ testSequelize(sequelize)
 app.use(methodOverride('_method'))
 app.use(cors())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')))
 
 ////////////////////////////
 // ERROR HANDLING
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
@@ -59,8 +59,8 @@ app.use('/beer', beerRoutes)     // REQUIRES AUTH. backend view/edit beer
 app.use('/food', foodRoutes)     // REQUIRES AUTH. backend view/edit food
 app.use('/cocktail', cocktailRoutes)
 app.use('/spirit', spiritRoutes)
-app.use('/NonAlc', NonAlcRoutes)
-app.use('/', mainRoutes)         // customers accessing the frontend
+app.use('/non-alc', NonAlcRoutes)
+app.use('/', mainRoutes)      // customers accessing the frontend
 app.use('/api/', externalRoutes) // DOES NOT REQUIRE AUTH. path for frontend to get menu data
 app.use('/api/auth', authRoutes) // AUTH 4 LYFE
 
